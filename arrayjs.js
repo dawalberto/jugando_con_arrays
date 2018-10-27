@@ -11,8 +11,14 @@ var Arrays = {
     },
     nomsAllArrs: function() {
         return this.noms;
+    },
+    deleteArry: function(nom) {
+        var posArr = this.noms.indexOf(nom);
+        this.noms.splice(posArr, 1);
+        this.arrs.splice(posArr, 1);
     }
 }
+
 
 function addArr() {
     var nomArr = document.getElementById('nomArr').value;
@@ -46,6 +52,21 @@ function addArr() {
 
 function changeListArr() {
     var nom = document.getElementById('listArrs').value;
-    console.log(nom);
     document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
+}
+
+function deleteArr() {
+    var nom = document.getElementById('listArrs').value;
+    var nomsArrs = Arrays.nomsAllArrs();
+
+    if (nomsArrs.indexOf(nom) < 0) alert('Seleccione un array');
+    else {
+        var list = document.getElementById('listArrs');
+
+        Arrays.deleteArry(nom);
+
+        list.remove(list.selectedIndex);
+        document.getElementById('selectedArray').value = '';
+        list.selectedIndex = 0;
+    }
 }
