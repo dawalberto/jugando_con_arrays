@@ -9,6 +9,10 @@ var Arrays = {
         var posArr = this.noms.indexOf(nom);
         return this.arrs[posArr];
     },
+    findPosByNom: function(nom) {
+        var posArr = this.noms.indexOf(nom);
+        return posArr;
+    },
     nomsAllArrs: function() {
         return this.noms;
     },
@@ -18,6 +22,7 @@ var Arrays = {
         this.arrs.splice(posArr, 1);
     }
 }
+
 
 
 function addArr() {
@@ -50,10 +55,12 @@ function addArr() {
     }
 }
 
+
 function changeListArr() {
     var nom = document.getElementById('listArrs').value;
     document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
 }
+
 
 function deleteArr() {
     var nom = document.getElementById('listArrs').value;
@@ -69,4 +76,31 @@ function deleteArr() {
         document.getElementById('selectedArray').value = '';
         list.selectedIndex = 0;
     }
+}
+
+
+function metodoArr() {
+    var metodo = document.getElementById('metodoArray').value;
+    var list = document.getElementById('listArrs').value;
+    var nom = document.getElementById('listArrs').value;
+    var pos = Arrays.findPosByNom(nom);
+
+    if (metodo == '' || list == '') {
+        if (metodo == '') alert('Debe seleccionar un método');
+        else alert('Debe seleccionar un array')
+    }
+    else {
+        switch (metodo) {
+            case 'reverse':
+                var newArr = Arrays.arrs[pos];
+                newArr = newArr.reverse();
+                document.getElementById('selectedArray').value = newArr;
+                break;
+        }
+    }
+}
+
+
+function resultado() {
+    metodoArr();
 }

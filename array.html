@@ -19,7 +19,7 @@
             <div class="col-3"><label for="nomArr" class="font-weight-light">AÑADE UN ARRAY</label></div>
             <div class="col-2"><input class="form-control" type="text" id="nomArr" placeholder="nombreArray"></div>
             <div class="col-6"><input class="form-control" type="text" id="elementsArr" placeholder="a, b, c, d, e"></div>
-            <div class="col-1"><button class="btn btn-outline-secondary" onclick="addArr()" >ADD</button></div>
+            <div class="col-1"><button class="btn btn-outline-success" onclick="addArr()" >ADD</button></div>
         </div>
         <div class="row">
             <div class="col-3"><label for="" class="font-weight-light">SELECCIONA UN ARRAY</label></div>
@@ -29,12 +29,12 @@
                 </select>
             </div>
             <div class="col-6"><input class="form-control" type="text" id="selectedArray" readonly></div>
-            <div class="col-1"><button class="btn btn-outline-secondary" onclick="deleteArr()">DELETE</button></div>
+            <div class="col-1"><button class="btn btn-outline-danger" onclick="deleteArr()">DELETE</button></div>
         </div>
         <div class="row">
             <div class="col-3"><label for="" class="font-weight-light">SELECCIONA UN MÉTODO</label></div>
             <div class="col-2">
-                <select class="form-control" name="" id="">
+                <select class="form-control" name="" id="metodoArray">
                     <option value="" disabled selected>Select</option>
                     <option value="reverse">reverse( )</option>
                     <option value="pop">pop( )</option>
@@ -46,7 +46,7 @@
             <div class="col-2"><input class="form-control" type="text" placeholder="0, 3"></div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-6"><button class="btn btn-outline-secondary btn-block">RESULTADO</button></div>
+            <div class="col-6"><button class="btn btn-outline-primary btn-block" onclick="resultado()" >RESULTADO</button></div>
         </div>
     </div>
 </body>
