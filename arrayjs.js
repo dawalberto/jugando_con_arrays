@@ -59,6 +59,7 @@ function addArr() {
 function changeListArr() {
     var nom = document.getElementById('listArrs').value;
     document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
+    document.getElementById('lengthArr').value = Arrays.findArrByNom(nom).length;
 }
 
 
@@ -74,6 +75,7 @@ function deleteArr() {
 
         list.remove(list.selectedIndex);
         document.getElementById('selectedArray').value = '';
+        document.getElementById('lengthArr').value = '';
         list.selectedIndex = 0;
     }
 }
