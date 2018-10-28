@@ -33,9 +33,12 @@ var Arrays = {
 }
 
 
-
+//JQUERY
 $(document).ready(function(){
     $('#arguments').attr('readonly', true);
+});
+$(function () {
+    $('[data-toggle="popover"]').popover()
 });
 
 
@@ -83,10 +86,13 @@ function changeMethod() {
     switch (selectedMethod) {
         case 'reverse':
             $('#arguments').attr('readonly', true);
-            break;
+        break;
         case 'pop':
             $('#arguments').attr('readonly', true);
-            break;
+        break;
+        case 'push':
+            $('#arguments').attr('readonly', false);
+        break;
     }
     
 }
@@ -126,7 +132,7 @@ function metodoArr() {
                 var newArr = Arrays.arrs[pos];
                 newArr = newArr.reverse();
                 document.getElementById('selectedArray').value = newArr;
-                break;
+            break;
             case 'pop':
                 var newArr = Arrays.arrs[pos];
 
@@ -135,10 +141,28 @@ function metodoArr() {
                     alert('Eliminado el elemento ' + (newArr.length - 1) + ': ' + '"' + newArr[newArr.length - 1] + '"');
                     newArr.pop();
                     Arrays.lengths[pos] = newArr.length;
-                    document.getElementById('selectedArray').value = newArr;
+                    document.getElementById('selectedArray').value = Arrays.arrs[pos];
                     document.getElementById('lengthArr').value = Arrays.lengths[pos];
                 }
-                break;
+            break;
+            case 'push':
+                var argumentos = document.getElementById('arguments').value;
+                var newArr = Arrays.arrs[pos];
+
+                if (argumentos.length == 0) alert('No has añadido ningún argumento');
+                else {
+                    argumentos = argumentos.split(',');
+                    argumentos = argumentos.map(e => e.trim());
+
+                    for (let i = 0; i < argumentos.length; i++) {
+                        newArr.push(argumentos[i]);
+                    }
+                    document.getElementById('selectedArray').value = Arrays.arrs[pos];
+                    Arrays.lengths[pos] = newArr.length;
+                    document.getElementById('lengthArr').value = Arrays.lengths[pos];     
+                    document.getElementById('arguments').value = '';           
+                }
+            break;
         }
     }
 }
