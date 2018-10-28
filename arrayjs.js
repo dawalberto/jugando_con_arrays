@@ -34,6 +34,11 @@ var Arrays = {
 
 
 
+$(document).ready(function(){
+    $('#arguments').attr('readonly', true);
+});
+
+
 function addArr() {
     var nomArr = document.getElementById('nomArr').value;
     var elements = document.getElementById('elementsArr').value;
@@ -69,6 +74,21 @@ function changeListArr() {
     var nom = document.getElementById('listArrs').value;
     document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
     document.getElementById('lengthArr').value = Arrays.lengthOfArray(nom);
+}
+
+
+function changeMethod() {
+    var selectedMethod = document.getElementById('metodoArray').value;
+
+    switch (selectedMethod) {
+        case 'reverse':
+            $('#arguments').attr('readonly', true);
+            break;
+        case 'pop':
+            $('#arguments').attr('readonly', true);
+            break;
+    }
+    
 }
 
 
