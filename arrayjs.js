@@ -86,7 +86,7 @@ function metodoArr() {
     var list = document.getElementById('listArrs').value;
     var nom = document.getElementById('listArrs').value;
     var pos = Arrays.findPosByNom(nom);
-
+    
     if (metodo == '' || list == '') {
         if (metodo == '') alert('Debe seleccionar un método');
         else alert('Debe seleccionar un array')
@@ -98,11 +98,22 @@ function metodoArr() {
                 newArr = newArr.reverse();
                 document.getElementById('selectedArray').value = newArr;
                 break;
+            case 'pop':
+                var newArr = Arrays.arrs[pos];
+
+                if (newArr.length == 0) alert('No quedan elementos en el array');
+                else {
+                    alert('Eliminado el elemento ' + (newArr.length - 1) + ': ' + '"' + newArr[newArr.length - 1] + '"');
+                    newArr.pop();
+                    document.getElementById('selectedArray').value = newArr;
+                    document.getElementById('lengthArr').value = newArr.length;
+                }
+                break;
         }
     }
 }
 
 
-function resultado() {
+function mutate() {
     metodoArr();
 }
