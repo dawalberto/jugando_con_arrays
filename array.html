@@ -18,8 +18,8 @@
     .labelRight {
         text-align: right;
     }
-    #divBotonMutate {
-        margin-top: 40px;
+    .botonAncho {
+        width: 80px;
     }
 </style>
 <body>
@@ -28,7 +28,7 @@
             <div class="col-2 labelRight"><label for="nomArr" class="font-weight-light">ADD ARRAY</label></div>
             <div class="col-2"><input class="form-control" type="text" id="nomArr" placeholder="nombreArray"></div>
             <div class="col-6"><input class="form-control" type="text" id="elementsArr" placeholder="a, b, c, d, e"></div>
-            <div class="col-1"><button class="btn btn-outline-success" onclick="addArr()">ADD</button></div>
+            <div class="col-1"><button class="btn btn-outline-success botonAncho" onclick="addArr()">ADD</button></div>
         </div>
         <div class="row align-items-end">
             <div class="col-2 labelRight"><label for="listArrs" class="font-weight-light">SELECT ARRAY</label></div>
@@ -38,14 +38,14 @@
                 </select>
             </div>
             <div class="col-6"><input class="form-control" type="text" id="selectedArray" readonly></div>
-            <div class="col-1"><button class="btn btn-outline-danger" onclick="deleteArr()">DELETE</button></div>
+            <div class="col-1"><button class="btn btn-outline-danger botonAncho" onclick="deleteArr()">DELETE</button></div>
         </div>
         <div class="row align-items-end">
             <div class="col-2 labelRight"><label for="" class="font-weight-light">LENGTH</label></div>
             <div class="col-2"><input class="form-control" id="lengthArr" type="text" readonly></div>
             <div class="col-6"></div>
             <div class="col-1">
-                    <button type="button" class="btn btn-outline-info" data-toggle="popover" data-placement="bottom" data-content="No debe usar ',' como elemento en sí para un array.
+                    <button type="button" class="btn btn-outline-info botonAncho" data-toggle="popover" data-placement="bottom" data-content="No debe usar ',' como elemento en sí para un array.
                     Ejemplo: elm0, elm1, ,, elm3. Si lo haces, al ser la coma el caracter que usa el array como separador entre el elemento anterior y posterior se producirá
                     un comportamiento no deseado. Es decir el ejemplo anterior quedaría de la siguiente manera ['elm0', 'elm1', '', '', 'elm3'] en lugar de 
                     ['elm0', 'elm1', ',', 'elm3'] como cabría esperar. Por lo que si vé que la longitud(length) de su array no es la que debería ser es muy probable
@@ -53,7 +53,11 @@
             </div>
         </div>
         <div class="row align-items-end">
-            <div class="col-2 labelRight"><label for="metodoArray" class="font-weight-light">SELECT METHOD</label></div>
+            <div class="col-2 labelRight"><label for="arguments" class="font-weight-light">ADD ARGUMENTS</label></div>
+            <div class="col-3"><input class="form-control" type="text" id="arguments"></div>
+        </div>
+        <div class="row align-items-end">
+            <div class="col-2 labelRight"><label for="metodoArray" class="font-weight-light">SELECT METHOD</label></div>            
             <div class="col-2">
                 <select class="form-control" name="" id="metodoArray" onchange="changeMethod()" >
                     <option value="" disabled selected>Select</option>
@@ -63,13 +67,7 @@
                     <option value="indexof">indexOf( )</option>           
                 </select>
             </div>
-        </div>
-        <div class="row align-items-end">
-            <div class="col-2 labelRight"><label for="arguments" class="font-weight-light">ADD ARGUMENTS</label></div>
-            <div class="col-3"><input class="form-control" type="text" id="arguments"></div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-6" id="divBotonMutate"><button class="btn btn-outline-primary btn-block" onclick="mutate()">MUTATE</button></div>
+            <div class="col-4" id="divBotonMutate"><button class="btn btn-outline-primary btn-block" onclick="mutate()">MUTATE</button></div>
         </div>
     </div>
 </body>
