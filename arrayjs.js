@@ -1,9 +1,11 @@
 var Arrays = {
     noms: [],
     arrs: [],
+    lengths: [],
     addArray: function(nom, arr) {
         this.noms.push(nom);
         this.arrs.push(arr);
+        this.lengths.push(arr.length);
     },
     findArrByNom: function(nom) {
         var posArr = this.noms.indexOf(nom);
@@ -13,13 +15,20 @@ var Arrays = {
         var posArr = this.noms.indexOf(nom);
         return posArr;
     },
-    nomsAllArrs: function() {
-        return this.noms;
-    },
     deleteArry: function(nom) {
         var posArr = this.noms.indexOf(nom);
         this.noms.splice(posArr, 1);
         this.arrs.splice(posArr, 1);
+        this.lengths.splice(posArr, 1);
+    },
+    lengthOfArray: function(nom) {
+        var posLength = this.noms.indexOf(nom);
+        return this.lengths[posLength];
+    },
+    info: function() {
+        console.log('nom', this.noms);
+        console.log('elemets', this.arrs);
+        console.log('length', this.lengths);
     }
 }
 
@@ -33,7 +42,7 @@ function addArr() {
     if (elements.length === 0 || nomArr.length === 0) alert('Introduzca un nombre y uno o más elementos para añadir un array');
     else {
         nomArr = nomArr.trim();      
-        var nomsArrs = Arrays.nomsAllArrs();
+        var nomsArrs = Arrays.noms;
 
         if (nomsArrs.indexOf(nomArr) >= 0) {
             alert('No se permiten dos Arrays con el mismo nombre');
@@ -59,13 +68,13 @@ function addArr() {
 function changeListArr() {
     var nom = document.getElementById('listArrs').value;
     document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
-    document.getElementById('lengthArr').value = Arrays.findArrByNom(nom).length;
+    document.getElementById('lengthArr').value = Arrays.lengthOfArray(nom);
 }
 
 
 function deleteArr() {
     var nom = document.getElementById('listArrs').value;
-    var nomsArrs = Arrays.nomsAllArrs();
+    var nomsArrs = Arrays.noms;
 
     if (nomsArrs.indexOf(nom) < 0) alert('Seleccione un array');
     else {
@@ -101,12 +110,13 @@ function metodoArr() {
             case 'pop':
                 var newArr = Arrays.arrs[pos];
 
-                if (newArr.length == 0) alert('No quedan elementos en el array');
+                if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
                     alert('Eliminado el elemento ' + (newArr.length - 1) + ': ' + '"' + newArr[newArr.length - 1] + '"');
                     newArr.pop();
+                    Arrays.lengths[pos] = newArr.length;
                     document.getElementById('selectedArray').value = newArr;
-                    document.getElementById('lengthArr').value = newArr.length;
+                    document.getElementById('lengthArr').value = Arrays.lengths[pos];
                 }
                 break;
         }
