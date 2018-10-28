@@ -121,12 +121,11 @@ function deleteArr() {
 
 function metodoArr() {
     var metodo = document.getElementById('metodoArray').value;
-    var list = document.getElementById('listArrs').value;
     var nom = document.getElementById('listArrs').value;
     var pos = Arrays.findPosByNom(nom);
     var inputArgumentos = document.getElementById('arguments');
     
-    if (metodo == '' || list == '') {
+    if (metodo == '' || nom == '') {
         if (metodo == '') alert('Debe seleccionar un método');
         else alert('Debe seleccionar un array')
     }
@@ -167,7 +166,22 @@ function metodoArr() {
                     document.getElementById('arguments').value = '';           
                 }
             break;
-                
+            case 'indexof':
+                var argumentos = inputArgumentos.value;
+                var newArr = Arrays.arrs[pos];
+
+                if (argumentos.length == 0) alert('No has añadido ningún argumento');
+                else {
+                    if (argumentos.indexOf(',') >= 0) alert('El método indexOf( ) solo necesita un argumento');
+                    else {                      
+                        argumentos = argumentos.trim();
+                        var posIndexOf = newArr.indexOf(argumentos);
+                        
+                        if (posIndexOf < 0) alert('Elemento no encontrado');
+                        else alert('Elemento ' + '"' + newArr[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
+                    }                 
+                }
+            break;
         }
     }
 }
