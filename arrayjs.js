@@ -68,6 +68,10 @@ function addArr() {
     
             document.getElementById('nomArr').value = '';
             document.getElementById('elementsArr').value = '';
+
+            list.selectedIndex = Arrays.arrs.length;
+            document.getElementById('selectedArray').value = Arrays.arrs[Arrays.arrs.length - 1];
+            document.getElementById('lengthArr').value = Arrays.lengths[Arrays.arrs.length - 1];
         }
     }
 }
@@ -85,12 +89,11 @@ function changeMethod() {
 
     switch (selectedMethod) {
         case 'reverse':
-            $('#arguments').attr('readonly', true);
-        break;
         case 'pop':
             $('#arguments').attr('readonly', true);
         break;
         case 'push':
+        case 'indexof':
             $('#arguments').attr('readonly', false);
         break;
     }
@@ -121,6 +124,7 @@ function metodoArr() {
     var list = document.getElementById('listArrs').value;
     var nom = document.getElementById('listArrs').value;
     var pos = Arrays.findPosByNom(nom);
+    var inputArgumentos = document.getElementById('arguments');
     
     if (metodo == '' || list == '') {
         if (metodo == '') alert('Debe seleccionar un método');
@@ -146,7 +150,7 @@ function metodoArr() {
                 }
             break;
             case 'push':
-                var argumentos = document.getElementById('arguments').value;
+                var argumentos = inputArgumentos.value;
                 var newArr = Arrays.arrs[pos];
 
                 if (argumentos.length == 0) alert('No has añadido ningún argumento');
@@ -163,6 +167,7 @@ function metodoArr() {
                     document.getElementById('arguments').value = '';           
                 }
             break;
+                
         }
     }
 }
