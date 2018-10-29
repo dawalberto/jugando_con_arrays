@@ -94,6 +94,7 @@ function changeMethod() {
         break;
         case 'push':
         case 'indexof':
+        case 'fill':
             $('#arguments').attr('readonly', false);
         break;
     }
@@ -124,6 +125,7 @@ function metodoArr() {
     var nom = document.getElementById('listArrs').value;
     var pos = Arrays.findPosByNom(nom);
     var inputArgumentos = document.getElementById('arguments');
+    var newArr = Arrays.arrs[pos];
     
     if (metodo == '' || nom == '') {
         if (metodo == '') alert('Debe seleccionar un método');
@@ -132,25 +134,21 @@ function metodoArr() {
     else {
         switch (metodo) {
             case 'reverse':
-                var newArr = Arrays.arrs[pos];
                 newArr = newArr.reverse();
                 document.getElementById('selectedArray').value = newArr;
             break;
             case 'pop':
-                var newArr = Arrays.arrs[pos];
-
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
                     alert('Eliminado el elemento ' + (newArr.length - 1) + ': ' + '"' + newArr[newArr.length - 1] + '"');
                     newArr.pop();
                     Arrays.lengths[pos] = newArr.length;
-                    document.getElementById('selectedArray').value = Arrays.arrs[pos];
-                    document.getElementById('lengthArr').value = Arrays.lengths[pos];
+
+                    refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
                 }
             break;
             case 'push':
                 var argumentos = inputArgumentos.value;
-                var newArr = Arrays.arrs[pos];
 
                 if (argumentos.length == 0) alert('No has añadido ningún argumento');
                 else {
@@ -160,15 +158,13 @@ function metodoArr() {
                     for (let i = 0; i < argumentos.length; i++) {
                         newArr.push(argumentos[i]);
                     }
-                    document.getElementById('selectedArray').value = Arrays.arrs[pos];
                     Arrays.lengths[pos] = newArr.length;
-                    document.getElementById('lengthArr').value = Arrays.lengths[pos];     
-                    document.getElementById('arguments').value = '';           
+
+                    refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
                 }
             break;
             case 'indexof':
                 var argumentos = inputArgumentos.value;
-                var newArr = Arrays.arrs[pos];
 
                 if (argumentos.length == 0) alert('No has añadido ningún argumento');
                 else {
@@ -176,16 +172,35 @@ function metodoArr() {
                     else {                      
                         argumentos = argumentos.trim();
                         var posIndexOf = newArr.indexOf(argumentos);
-                        
+
                         if (posIndexOf < 0) alert('Elemento no encontrado');
                         else alert('Elemento ' + '"' + newArr[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
                     }                 
+                }
+            break;
+            case 'fill':
+                var argumentos = inputArgumentos.value;
+
+                if (argumentos.length == 0) alert('No has añadido ningún argumento');
+                else {
+                    if (argumentos.indexOf(',') >= 0) alert('El método fill( ) solo necesita un argumento');
+                    else {
+                        argumentos = argumentos.trim();
+                        newArr = newArr.fill(argumentos);
+
+                        refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
+                    }
                 }
             break;
         }
     }
 }
 
+function refreshInputs(selected, length) {
+    document.getElementById('selectedArray').value = selected;
+    document.getElementById('lengthArr').value = length    
+    document.getElementById('arguments').value = '';  
+}
 
 function mutate() {
     metodoArr();
