@@ -1,5 +1,5 @@
 ### JUEGA CON ARRAYS
 
-Crea y modifica arrays para ver los resultados
+Crea, modifica y experimenta con arrays sin escribir una línea de código
 
 ![imagen](./arrayImage.png)
