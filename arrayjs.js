@@ -15,7 +15,7 @@ var Arrays = {
         var posArr = this.noms.indexOf(nom);
         return posArr;
     },
-    deleteArry: function(nom) {
+    deleteArray: function(nom) {
         var posArr = this.noms.indexOf(nom);
         this.noms.splice(posArr, 1);
         this.arrs.splice(posArr, 1);
@@ -97,6 +97,7 @@ function changeMethod() {
         case 'indexof':
         case 'fill':
         case 'splice':
+        case 'unshift':
             $('#arguments').attr('readonly', false);
         break;
     }
@@ -112,7 +113,7 @@ function deleteArr() {
     else {
         var list = document.getElementById('listArrs');
 
-        Arrays.deleteArry(nom);
+        Arrays.deleteArray(nom);
 
         list.remove(list.selectedIndex);
         document.getElementById('selectedArray').value = '';
@@ -142,7 +143,7 @@ function metodoArr() {
             case 'pop':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
-                    alert('Eliminado el elemento ' + (newArr.length - 1) + ': ' + '"' + newArr[newArr.length - 1] + '"');
+                    alert('Eliminado el elemento ' + '"' + newArr[newArr.length - 1] + '"');
                     newArr.pop();
                     Arrays.lengths[pos] = newArr.length;
 
@@ -177,6 +178,8 @@ function metodoArr() {
 
                         if (posIndexOf < 0) alert('Elemento no encontrado');
                         else alert('Elemento ' + '"' + newArr[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
+
+                        inputArgumentos.value = '';
                     }                 
                 }
             break;
@@ -243,6 +246,22 @@ function metodoArr() {
                         
                     Arrays.lengths[pos] = newArr.length;
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);
+                }
+            break;
+            case 'unshift': 
+                var argumentos = inputArgumentos.value;
+
+                if (argumentos.length == 0) alert('No has añadido ningún argumento');
+                else {
+                    argumentos = argumentos.split(',');
+                    argumentos = argumentos.map(e => e.trim());
+
+                    for (let i = argumentos.length - 1; i >= 0 ; i--) {
+                        newArr.unshift(argumentos[i]);
+                    }
+                    Arrays.lengths[pos] = newArr.length;
+
+                    refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
                 }
             break;
         }
