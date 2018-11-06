@@ -34,9 +34,6 @@ var Arrays = {
 
 
 //JQUERY
-$(document).ready(function(){
-    $('#arguments').attr('readonly', true);
-});
 $(function () {
     $('[data-toggle="popover"]').popover()
 });
@@ -72,33 +69,60 @@ function addArr() {
             list.selectedIndex = Arrays.arrs.length;
             document.getElementById('selectedArray').value = Arrays.arrs[Arrays.arrs.length - 1];
             document.getElementById('lengthArr').value = Arrays.lengths[Arrays.arrs.length - 1];
+
+            fillSelectArr2(nomArr);
         }
     }
 }
 
 
-function changeListArr() {
-    var nom = document.getElementById('listArrs').value;
-    document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
-    document.getElementById('lengthArr').value = Arrays.lengthOfArray(nom);
+function fillSelectArr2(momArr) {
+    var list = document.getElementById('listArrs2');
+
+    var opt = document.createElement('option');
+    opt.value = momArr;
+    opt.text = momArr;
+    list.add(opt);
+}
+
+
+function changeListArr(dos) {
+    if (dos == undefined) {
+        var nom = document.getElementById('listArrs').value;
+        document.getElementById('selectedArray').value = Arrays.findArrByNom(nom);
+        document.getElementById('lengthArr').value = Arrays.lengthOfArray(nom);
+    }
+    else {
+        var nom = document.getElementById('listArrs2').value;
+        document.getElementById('selectedArray2').value = Arrays.findArrByNom(nom);
+    }
 }
 
 
 function changeMethod() {
     var selectedMethod = document.getElementById('metodoArray').value;
+    var list2 = document.getElementById('listArrs2');
 
     switch (selectedMethod) {
         case 'reverse':
         case 'pop':
         case 'shift':
-            $('#arguments').attr('readonly', true);
+            document.getElementById('divArgs').style.display = 'none';
+            document.getElementById('array2').style.display = 'none';
         break;
         case 'push':
         case 'indexof':
         case 'fill':
         case 'splice':
         case 'unshift':
-            $('#arguments').attr('readonly', false);
+            document.getElementById('divArgs').style.display = 'flex';            
+            document.getElementById('array2').style.display = 'none';
+        break;
+        case 'concat':
+            list2.selectedIndex = 0;
+            document.getElementById('selectedArray2').value = '';
+            document.getElementById('divArgs').style.display = 'none';            
+            document.getElementById('array2').style.display = 'flex';
         break;
     }
     
@@ -112,13 +136,22 @@ function deleteArr() {
     if (nomsArrs.indexOf(nom) < 0) alert('Seleccione un array');
     else {
         var list = document.getElementById('listArrs');
+        var list2 = document.getElementById('listArrs2');
 
         Arrays.deleteArray(nom);
 
+        var posIndexSelect = list.selectedIndex;
+
         list.remove(list.selectedIndex);
+        list2.remove(posIndexSelect);
+
         document.getElementById('selectedArray').value = '';
         document.getElementById('lengthArr').value = '';
+
+        document.getElementById('selectedArray2').value = '';
+
         list.selectedIndex = 0;
+        list2.selectedIndex = 0;
     }
 }
 
@@ -129,7 +162,10 @@ function metodoArr() {
     var pos = Arrays.findPosByNom(nom);
     var inputArgumentos = document.getElementById('arguments');
     var newArr = Arrays.arrs[pos];
+    var list = document.getElementById('listArrs');
+    var list2 = document.getElementById('listArrs2');
     
+
     if (metodo == '' || nom == '') {
         if (metodo == '') alert('Debe seleccionar un método');
         else alert('Debe seleccionar un array')
@@ -262,6 +298,20 @@ function metodoArr() {
                     Arrays.lengths[pos] = newArr.length;
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
+                }
+            break;
+            case 'concat':
+                if (list.selectedIndex == 0 || list2.selectedIndex == 0) alert('Debe seleccionar dos arrays');
+                else {
+                    var arr1 = Arrays.findArrByNom(list.value);
+                    var arr2 = Arrays.findArrByNom(list2.value);
+
+                    var arrConcat = arr1.concat(arr2);                   
+
+                    var nomArr1 = Arrays.noms[Arrays.findPosByNom(list.value)];
+                    var nomArr2 = Arrays.noms[Arrays.findPosByNom(list2.value)];
+
+                    alert(nomArr1 + '.concat(' + nomArr2 +'): \n' + arrConcat + '\nlength: ' + arrConcat.length);                  
                 }
             break;
         }

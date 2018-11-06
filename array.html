@@ -21,6 +21,12 @@
     .botonAncho {
         width: 80px;
     }
+    #array2 {
+        display: none;
+    }
+    #divArgs {
+        display: none;
+    }
 </style>
 <body>
     <div class="container">
@@ -33,33 +39,42 @@
         <div class="row align-items-end">
             <div class="col-2 labelRight"><label for="listArrs" class="font-weight-light">SELECT ARRAY</label></div>
             <div class="col-2">
-                <select class="form-control" name="" id="listArrs" onchange="changeListArr()">
+                <select class="form-control" name="listArrs" id="listArrs" onchange="changeListArr()">
                     <option value="" disabled selected>Select</option>
                 </select>
             </div>
             <div class="col-6"><input class="form-control" type="text" id="selectedArray" readonly></div>
             <div class="col-1"><button class="btn btn-outline-danger botonAncho" onclick="deleteArr()">DELETE</button></div>
         </div>
-        <div class="row align-items-end">
-            <div class="col-2 labelRight"><label for="" class="font-weight-light">LENGTH</label></div>
-            <div class="col-2"><input class="form-control" id="lengthArr" type="text" readonly></div>
-            <div class="col-6"></div>
-            <div class="col-1">
-                    <button type="button" class="btn btn-outline-info botonAncho" data-toggle="popover" data-placement="bottom" data-content="No debe usar ',' como elemento en sí para un array.
-                    Ejemplo: elm0, elm1, ,, elm3. Si lo haces, al ser la coma el caracter que usa el array como separador entre el elemento anterior y posterior se producirá
-                    un comportamiento no deseado. Es decir el ejemplo anterior quedaría de la siguiente manera ['elm0', 'elm1', '', '', 'elm3'] en lugar de 
-                    ['elm0', 'elm1', ',', 'elm3'] como cabría esperar. Por lo que si vé que la longitud(length) de su array no es la que debería ser es muy probable
-                    que el problema esté relacionado con esto. En los arrays reales esto no sucede.">INFO</button>
+        <div class="row align-items-end" id="array2">
+            <div class="col-2 labelRight"><label for="listArrs2" class="font-weight-light">SELECT ARRAY 2</label></div>
+            <div class="col-2">
+                <select class="form-control" name="listArrs2" id="listArrs2" onchange="changeListArr('dos')">
+                    <option value="" disabled selected>Select</option>
+                </select>
             </div>
+            <div class="col-6"><input class="form-control" type="text" id="selectedArray2" readonly></div>
         </div>
         <div class="row align-items-end">
+            <div class="col-2 labelRight"><label for="lengthArr" class="font-weight-light">LENGTH</label></div>
+            <div class="col-2"><input class="form-control" id="lengthArr" type="text" readonly></div>
+            <div class="col-1">
+                    <button type="button" class="btn btn-outline-secondary rounded-circle" data-toggle="popover" data-placement="right" data-html="true"
+                    data-content="No debe utilizar el caracter coma (<strong>,</strong>) como elemento para un array.
+                    Ejemplo: elm0, elm1, <strong>,</strong>, elm3. Si lo haces, al ser la coma el caracter que usa el array como separador entre el elemento anterior y posterior se producirá
+                    un comportamiento no deseado. Es decir el ejemplo anterior quedaría de la siguiente manera: <br> <strong>['elm0', 'elm1', '', '', 'elm3']</strong> <br> en lugar de: <br>
+                    <strong>['elm0', 'elm1', ',', 'elm3']</strong> como cabría esperar. Por lo que si vé que la longitud(length) de su array no es la que debería ser es muy probable
+                    que el problema esté relacionado con esto. En los arrays reales esto no sucede.">?</button>
+            </div>
+        </div>
+        <div class="row align-items-end" id="divArgs">
             <div class="col-2 labelRight"><label for="arguments" class="font-weight-light">ADD ARGUMENTS</label></div>
             <div class="col-3"><input class="form-control" type="text" id="arguments"></div>
         </div>
         <div class="row align-items-end">
             <div class="col-2 labelRight"><label for="metodoArray" class="font-weight-light">SELECT METHOD</label></div>            
             <div class="col-2">
-                <select class="form-control" name="" id="metodoArray" onchange="changeMethod()" >
+                <select class="form-control" name="metodoArray" id="metodoArray" onchange="changeMethod()" >
                     <option value="" disabled selected>Select</option>
                     <option value="pop">pop( )</option>
                     <option value="shift">shift( )</option>  
@@ -69,9 +84,10 @@
                     <option value="indexof">indexOf( )</option>
                     <option value="fill">fill( )</option>  
                     <option value="unshift">unshift( )</option>
+                    <option value="concat">concat( )</option>
                 </select>
             </div>
-            <div class="col-4" id="divBotonMutate"><button class="btn btn-outline-primary btn-block" onclick="mutate()">MUTATE</button></div>
+            <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()">MUTATE</button></div>
         </div>
     </div>
 </body>
