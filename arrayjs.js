@@ -251,33 +251,6 @@ function metodoArr() {
                     argumentos = argumentos.split(',');
                     argumentos = argumentos.map(e => e.trim());
 
-                    /*--CODIGO QUE PENSABA NECESARIO PARA EL METODO SPLICE, PERO HA RESULTADO MUCHO MÁS FACIL QUE ESTO, LO COMENTO POR SI POSTERIORMENTE ME SIRVE PARA OTRO METODO--
-                    if (argumentos.length < 2){
-                        alert('Deberías intrododucir un mínimo de 2 argumento:' + '\n' + 
-                        '-El primero para indicar en que posición deseas realizar la operación, por ejemplo la posición 0.' + '\n' + 
-                        '-El segundo para indicar que deseas realizar en dicha posición, si indica un 0 simplemente se añadirá al array ' +
-                        'el tercer argumento(y el cuarto, y el quinto y... si los hay) en la posición indicada en el primer argumento, en este caso en la posición 0.' + '\n' +
-                        '-Si en el segundo argumento introduces un 1 se eliminará el elemento que haya en la posición indicada en el primer argumento. De la misma manera que si ' + 
-                        'introduces un 2 se eliminarán los dos argumentos que haya a partir de la posición indicada en el argumento uno, incluida dicha posición. Y así sucesivamente');
-                    } 
-                    else {
-                        if (isNaN(Number(argumentos[0])) || isNaN(Number(argumentos[1]))) alert('Para obtener el comportamiento comunmente deseado los dos primeros argumentos deberían ser numéricos');
-
-                        if (!isNaN(argumentos[0]) || !isNaN(argumentos[1])) {
-                            if (!isNaN(argumentos[0]) && !isNaN(argumentos[1])) {
-                                argumentos[0] = Number(argumentos[0]);
-                                argumentos[1] = Number(argumentos[1]);                               
-                            }
-                            else if (!isNaN(argumentos[0])) {
-                                argumentos[0] = Number(argumentos[0]);
-                            }
-                            else if (!isNaN(argumentos[1])) {
-                                argumentos[1] = Number(argumentos[1]);
-                            }
-                        }
-                        
-                    }
-                    */
                     newArr.splice(...argumentos);
                         
                     Arrays.lengths[pos] = newArr.length;
@@ -326,4 +299,23 @@ function refreshInputs(selected, length) {
 
 function mutate() {
     metodoArr();
+}
+
+
+function navegador() {
+    var navegador = "";
+
+    if (navigator.userAgent.toUpperCase().indexOf("EDGE") > 0) navegador = "edge";
+    if (navigator.userAgent.toUpperCase().indexOf("FIREFOX") > 0) navegador = "firefox";
+    if (navigator.userAgent.toUpperCase().indexOf("OPR") > 0) navegador = "opera";
+    if (navigator.userAgent.toUpperCase().indexOf("CHROME") > 0 && navegador == "") navegador = "chrome"
+    else if (navegador == "") navegador = "explorer";
+
+    return navegador;
+}
+
+
+function helpMethod() {
+    
+    if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la explicación de los metodos');
 }
