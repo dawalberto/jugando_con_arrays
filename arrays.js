@@ -284,7 +284,7 @@ function metodoArr() {
                     var nomArr1 = Arrays.noms[Arrays.findPosByNom(list.value)];
                     var nomArr2 = Arrays.noms[Arrays.findPosByNom(list2.value)];
 
-                    alert(nomArr1 + '.concat(' + nomArr2 +'): \n' + arrConcat + '\nlength: ' + arrConcat.length);                  
+                    alert(nomArr1 + '.concat(' + nomArr2 +'); \n \n' + arrConcat + '\n \nlength: ' + arrConcat.length);                  
                 }
             break;
         }
@@ -317,7 +317,8 @@ function navegador() {
 
 function helpMethod() {
     
-    if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la explicación de los metodos');
+    if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la definición y uso de cada metodo');
+    else if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
     else {
         openWindowMethods()
     }
@@ -325,5 +326,5 @@ function helpMethod() {
 
 
 function openWindowMethods() {
-    window.open('./methods.html', '', 'top=150px, left=200px, width=700px, height=500px');
+    window.open('./methods.html', '', 'top=90px, left=10px, width=430px, height=500px');
 }
