@@ -118,6 +118,27 @@
     </code></pre>
 </div>
 
+<div id="push">
+    <p class="display-4 code">push( )</p>
+
+    <div id="pushdef" class="definition">
+        <p class="text-justify">El método push() añade nuevos elementos en un array y devuelve la nueva longitud de este.</p>
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+
+        <var class="keyWord">var</var> <var>newLength</var> = <var>vowels</var>.<var class="method">push</var>(<var class="strings">'A'</var>, <var class="strings">'E'</var>);
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels ----> ['a', 'e', 'i', 'o', 'u', 'A', 'E']
+        newLength ----> 7
+        */
+        </var>
+    </code></pre>
+</div>
+
 <script>
     function methodSelected() {
         var windowFather = window.opener;
@@ -130,13 +151,16 @@
 
         switch (method) {
             case 'pop':
-                changeDisplay('pop')
+                changeDisplay('pop');
             break;
             case 'shift':
-                changeDisplay('shift')
+                changeDisplay('shift');
             break;
             case 'reverse':
-                changeDisplay('reverse')
+                changeDisplay('reverse');
+            break;
+            case 'push':
+                changeDisplay('push');
             break;
         }
     }

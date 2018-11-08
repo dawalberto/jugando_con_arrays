@@ -328,3 +328,16 @@ function helpMethod() {
 function openWindowMethods() {
     window.open('./methods.html', '', 'top=90px, left=10px, width=430px, height=500px');
 }
+
+
+function cleanInputs() {
+    document.getElementById('nomArr').value = '';
+    document.getElementById('elementsArr').value = '';   
+    document.getElementById('listArrs').selectedIndex = 0;
+    document.getElementById('selectedArray').value = '';
+    document.getElementById('listArrs2').selectedIndex = 0;
+    document.getElementById('selectedArray2').value = '';
+    document.getElementById('lengthArr').value = '';
+    document.getElementById('arguments').value = '';
+    document.getElementById('metodoArray').selectedIndex = 0;
+}
