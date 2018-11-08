@@ -318,4 +318,12 @@ function navegador() {
 function helpMethod() {
     
     if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la explicación de los metodos');
+    else {
+        openWindowMethods()
+    }
+}
+
+
+function openWindowMethods() {
+    window.open('./methods.html', '', 'top=150px, left=200px, width=700px, height=500px');
 }
