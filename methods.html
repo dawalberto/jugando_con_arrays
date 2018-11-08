@@ -40,11 +40,11 @@
     }
     div {
         display: none;
-        width: 380px;
+        width: 450px;
     }
     hr {
         border: 1px solid white;
-        width: 415px;
+        width: 490px;
         margin-left: 5px;
         margin-top: 20px;
         margin-bottom: 0;
@@ -139,6 +139,39 @@
     </code></pre>
 </div>
 
+<div id="splice">
+    <p class="display-4 code">splice( )</p>
+
+    <div id="splicedef" class="definition">
+        <p class="text-justify">El método splice() añade o elimina(según los parametros que le pasemos) elementos en un array, y devuelve los elementos eliminados.</p>
+        <p class="text-justify">Con el primer parámetro indicamos la posición en la que queremos realizar los cambios</p>
+        <p class="text-justify">Y con el segundo parametro, si le pasamos un 0 estamos indicando que vamos a insertar un elemento(o varios) en la posición indicada en el primer parametro. 
+            Mientras que si introducimos un número mayor que 0, eliminaremos el número de elementos que hayamos indicado o serán reemplazados en caso de que hayamos indicado nuevos elementos(más parametros).
+        </p>
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="coments">//AÑADIENDO ELEMENTOS</var>
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+        <var>vowels</var>.<var class="method">splice</var>(<var class="nums">1</var>, <var class="nums">0</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>);
+        <var class="coments">//RESULTADO vowels ----> ['a', 'e', 'i', 'o', 'u']</var>
+
+        <var class="coments">//ELIMINANDO ELEMENTOS</var>
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];       
+        <var class="keyWord">var</var> <var>deletedElements</var> = <var>vowels</var>.<var class="method">splice</var>(<var class="nums">2</var>, <var class="nums">2</var>);
+        <var class="coments">/*RESULTADO
+        vowels ----> ['a', 'e', 'u']
+        deletedElements ----> ['i', 'o']
+        */
+        </var>
+
+        <var class="coments">//REEMPLAZANDO ELEMENTOS</var>
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'w'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+        <var>vowels</var>.<var class="method">splice</var>(<var class="nums">1</var>, <var class="nums">1</var>, <var class="strings">'e'</var>);
+        <var class="coments">//RESULTADO vowels ----> ['a', 'e', 'i', 'o', 'u']</var>
+    </code></pre>
+</div>
+
 <script>
     function methodSelected() {
         var windowFather = window.opener;
@@ -161,6 +194,9 @@
             break;
             case 'push':
                 changeDisplay('push');
+            break;
+            case 'splice':
+                changeDisplay('splice');
             break;
         }
     }
