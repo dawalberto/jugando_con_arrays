@@ -326,7 +326,7 @@ function helpMethod() {
 
 
 function openWindowMethods() {
-    window.open('./methods.html', '', 'top=85px, left=10px, width=500px, height=500px');
+    window.open('./methods.html', '', 'top=85px, left=10px, width=600px, height=500px');
 }
 
 

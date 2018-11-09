@@ -31,7 +31,7 @@
     }
     .definition {
         color: white; 
-        width: 380px;
+        width: 450px;
         padding-left: 60px;
         padding-top: 20px;
     }
@@ -40,7 +40,7 @@
     }
     div {
         display: none;
-        width: 450px;
+        width: 580px;
     }
     hr {
         border: 1px solid white;
@@ -172,6 +172,50 @@
     </code></pre>
 </div>
 
+<div id="indexof">
+    <p class="display-4 code">indexOf( )</p>
+
+    <div id="indexofdef" class="definition">
+        <p class="text-justify">El método indexOf() busca elementos en un array y devuelve su posición, en caso de no encontrarlo devolverá -1.</p>
+        <p class="text-justify">En caso de haber varios elementos con el mísmo nombre nos devolverá la posición del primero de ellos.</p>
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+
+        <var class="keyWord">var</var> <var>posElement</var> = <var>vowels</var>.<var class="method">indexOf</var>(<var class="strings">'i'</var>);
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels ----> ['a', 'e', 'i', 'o', 'u']
+        posElement ----> 2
+        */
+        </var>
+    </code></pre>
+</div>
+
+<div id="fill">
+    <p class="display-4 code">fill( )</p>
+
+    <div id="filldef" class="definition">
+        <p class="text-justify">El método fill() reemplaza todos los elementos de un array con el parametro que le pasemos.</p>
+        <p class="text-justify">También es posible indicarle el valor seguido de la posición de inicio y final para que reemplace únicamente esos elementos.</p>
+
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+
+        <var>vowels</var>.<var class="method">fill</var>(<var class="strings">'A'</var>);
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels ----> ['A', 'A', 'A', 'A', 'A']
+        */
+        </var>
+    </code></pre>
+</div>
+
 <script>
     function methodSelected() {
         var windowFather = window.opener;
@@ -197,6 +241,12 @@
             break;
             case 'splice':
                 changeDisplay('splice');
+            break;
+            case 'indexof':
+                changeDisplay('indexof');
+            break;
+            case 'fill':
+                changeDisplay('fill');
             break;
         }
     }
