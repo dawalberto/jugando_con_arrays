@@ -216,6 +216,28 @@
     </code></pre>
 </div>
 
+<div id="lastindexof">
+    <p class="display-4 code">lastIndexOf( )</p>
+
+    <div id="lastindexofdef" class="definition">
+        <p class="text-justify">El método lastIndexOf() busca elementos en un array y devuelve su posición, en caso de no encontrarlo devolverá -1.</p>
+        <p class="text-justify">En caso de haber varios elementos con el mísmo nombre nos devolverá la posición del último de ellos.</p>
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'a'</var>, <var class="strings">'u'</var>];
+
+        <var class="keyWord">var</var> <var>posElement</var> = <var>vowels</var>.<var class="method">lastIndexOf</var>(<var class="strings">'a'</var>);
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels ----> ['a', 'e', 'i', 'o', 'a', 'u']
+        posElement ----> 4
+        */
+        </var>
+    </code></pre>
+</div>
+
 <script>
     function methodSelected() {
         var windowFather = window.opener;
@@ -247,6 +269,9 @@
             break;
             case 'fill':
                 changeDisplay('fill');
+            break;
+            case 'lastindexof':
+                changeDisplay('lastindexof');
             break;
         }
     }

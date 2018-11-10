@@ -124,6 +124,7 @@ function changeMethod() {
         case 'fill':
         case 'splice':
         case 'unshift':
+        case 'lastindexof':
             document.getElementById('divArgs').style.display = 'flex';            
             document.getElementById('array2').style.display = 'none';
         break;
@@ -304,6 +305,24 @@ function metodoArr() {
 
                     Arrays.historyOfArray(nom, 'concat( )');
                     alert(nomArr1 + '.concat(' + nomArr2 +'); \n \n' + arrConcat + '\n \nlength: ' + arrConcat.length);                  
+                }
+            break;
+            case 'lastindexof':
+                var argumentos = inputArgumentos.value;
+
+                if (argumentos.length == 0) alert('No has añadido ningún argumento');
+                else {
+                    if (argumentos.indexOf(',') >= 0) alert('El método lastIndexOf( ) solo necesita un argumento');
+                    else {                      
+                        argumentos = argumentos.trim();
+                        var posLastIndexOf = newArr.lastIndexOf(argumentos);
+
+                        if (posLastIndexOf < 0) alert('Elemento no encontrado');
+                        else alert('Elemento ' + '"' + newArr[posLastIndexOf] + '"' + ' en posición ' + posLastIndexOf);   
+
+                        Arrays.historyOfArray(nom, 'lastIndexOf( )');
+                        inputArgumentos.value = '';
+                    }                 
                 }
             break;
         }
