@@ -2,10 +2,12 @@ var Arrays = {
     noms: [],
     arrs: [],
     lengths: [],
+    history: [],
     addArray: function(nom, arr) {
         this.noms.push(nom);
         this.arrs.push(arr);
         this.lengths.push(arr.length);
+        this.history.push([]);
     },
     findArrByNom: function(nom) {
         var posArr = this.noms.indexOf(nom);
@@ -20,15 +22,22 @@ var Arrays = {
         this.noms.splice(posArr, 1);
         this.arrs.splice(posArr, 1);
         this.lengths.splice(posArr, 1);
+        this.history.splice(posArr, 1);
     },
     lengthOfArray: function(nom) {
         var posLength = this.noms.indexOf(nom);
         return this.lengths[posLength];
     },
+    historyOfArray: function(nom, method) {
+        var posArr = Arrays.findPosByNom(nom);
+        this.history[posArr].push(method);
+    },
     info: function() {
         console.log('nom', this.noms);
         console.log('elemets', this.arrs);
         console.log('length', this.lengths);
+        console.log('history', this.history);
+
     }
 }
 
@@ -175,6 +184,7 @@ function metodoArr() {
             case 'reverse':
                 newArr = newArr.reverse();
                 document.getElementById('selectedArray').value = newArr;
+                Arrays.historyOfArray(nom, 'reverse( )');
             break;
             case 'pop':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
@@ -182,6 +192,7 @@ function metodoArr() {
                     alert('Eliminado el elemento ' + '"' + newArr[newArr.length - 1] + '"');
                     newArr.pop();
                     Arrays.lengths[pos] = newArr.length;
+                    Arrays.historyOfArray(nom, 'pop( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
                 }
@@ -198,6 +209,7 @@ function metodoArr() {
                         newArr.push(argumentos[i]);
                     }
                     Arrays.lengths[pos] = newArr.length;
+                    Arrays.historyOfArray(nom, 'push( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
                 }
@@ -215,6 +227,7 @@ function metodoArr() {
                         if (posIndexOf < 0) alert('Elemento no encontrado');
                         else alert('Elemento ' + '"' + newArr[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
 
+                        Arrays.historyOfArray(nom, 'indexOf( )');
                         inputArgumentos.value = '';
                     }                 
                 }
@@ -228,6 +241,7 @@ function metodoArr() {
                     else {
                         argumentos = argumentos.trim();
                         newArr = newArr.fill(argumentos);
+                        Arrays.historyOfArray(nom, 'fill( )');
 
                         refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
                     }
@@ -239,6 +253,7 @@ function metodoArr() {
                     alert('Eliminado el elemento ' + '"' + newArr.shift() + '"');
 
                     Arrays.lengths[pos] = newArr.length;
+                    Arrays.historyOfArray(nom, 'shift( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
                 }
@@ -254,6 +269,8 @@ function metodoArr() {
                     newArr.splice(...argumentos);
                         
                     Arrays.lengths[pos] = newArr.length;
+                    Arrays.historyOfArray(nom, 'splice( )');
+
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);
                 }
             break;
@@ -269,6 +286,7 @@ function metodoArr() {
                         newArr.unshift(argumentos[i]);
                     }
                     Arrays.lengths[pos] = newArr.length;
+                    Arrays.historyOfArray(nom, 'unshift( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
                 }
@@ -284,6 +302,7 @@ function metodoArr() {
                     var nomArr1 = Arrays.noms[Arrays.findPosByNom(list.value)];
                     var nomArr2 = Arrays.noms[Arrays.findPosByNom(list2.value)];
 
+                    Arrays.historyOfArray(nom, 'concat( )');
                     alert(nomArr1 + '.concat(' + nomArr2 +'); \n \n' + arrConcat + '\n \nlength: ' + arrConcat.length);                  
                 }
             break;
@@ -317,7 +336,7 @@ function navegador() {
 
 function helpMethod() {
     
-    if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la definición y uso de cada metodo');
+    if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la definición y uso de cada método');
     else if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
     else {
         openWindowMethods()
