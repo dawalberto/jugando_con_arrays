@@ -359,4 +359,6 @@ function cleanInputs() {
     document.getElementById('lengthArr').value = '';
     document.getElementById('arguments').value = '';
     document.getElementById('metodoArray').selectedIndex = 0;
+
+    if (screen.width < 400) alert('Esta página todavía no está optimizada para móviles. Estamos trabajando en ello.');
 }
