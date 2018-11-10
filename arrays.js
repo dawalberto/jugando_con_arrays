@@ -349,7 +349,7 @@ function openWindowMethods() {
 }
 
 
-function cleanInputs() {
+function cleanInputsAndCheckDevice() {
     document.getElementById('nomArr').value = '';
     document.getElementById('elementsArr').value = '';   
     document.getElementById('listArrs').selectedIndex = 0;
@@ -361,11 +361,8 @@ function cleanInputs() {
     document.getElementById('metodoArray').selectedIndex = 0;
 
     var widthDevice = screen.width;
+
     if (widthDevice < 400) {
         alert('Esta página todavía no está optimizada para móviles. Estamos trabajando en ello.');
-        console.log(widthDevice + ' a entrado');
-    }
-    else {
-        console.log(widthDevice + ' NO a entrado');
     }
 }
