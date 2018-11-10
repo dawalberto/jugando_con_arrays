@@ -176,7 +176,7 @@
     <p class="display-4 code">indexOf( )</p>
 
     <div id="indexofdef" class="definition">
-        <p class="text-justify">El método indexOf() busca elementos en un array y devuelve su posición, en caso de no encontrarlo devolverá -1.</p>
+        <p class="text-justify">El método indexOf() busca un elemento en un array y devuelve su posición, en caso de no encontrarlo devolverá -1.</p>
         <p class="text-justify">En caso de haber varios elementos con el mísmo nombre nos devolverá la posición del primero de ellos.</p>
     </div>
     <hr>
@@ -220,7 +220,7 @@
     <p class="display-4 code">lastIndexOf( )</p>
 
     <div id="lastindexofdef" class="definition">
-        <p class="text-justify">El método lastIndexOf() busca elementos en un array y devuelve su posición, en caso de no encontrarlo devolverá -1.</p>
+        <p class="text-justify">El método lastIndexOf() busca un elemento en un array y devuelve su posición, en caso de no encontrarlo devolverá -1.</p>
         <p class="text-justify">En caso de haber varios elementos con el mísmo nombre nos devolverá la posición del último de ellos.</p>
     </div>
     <hr>
@@ -237,6 +237,27 @@
         </var>
     </code></pre>
 </div>
+
+<div id="includes">
+        <p class="display-4 code">indexOf( )</p>
+    
+        <div id="includesdef" class="definition">
+            <p class="text-justify">El método includes() busca un elemento en un array y devuelve true en caso de encontrarlo y false en caso de no hacerlo.</p>
+        </div>
+        <hr>
+        <pre><code class="code">
+            <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+    
+            <var class="keyWord">var</var> <var>encontrado</var> = <var>vowels</var>.<var class="method">includes</var>(<var class="strings">'i'</var>);
+            <var class="coments">
+            /*
+            RESULTADO
+            vowels ----> ['a', 'e', 'i', 'o', 'u']
+            encontrado ----> true
+            */
+            </var>
+        </code></pre>
+    </div>
 
 <script>
     function methodSelected() {
@@ -272,6 +293,9 @@
             break;
             case 'lastindexof':
                 changeDisplay('lastindexof');
+            break;
+            case 'includes':
+                changeDisplay('includes');
             break;
         }
     }

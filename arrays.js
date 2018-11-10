@@ -125,6 +125,7 @@ function changeMethod() {
         case 'splice':
         case 'unshift':
         case 'lastindexof':
+        case 'includes':
             document.getElementById('divArgs').style.display = 'flex';            
             document.getElementById('array2').style.display = 'none';
         break;
@@ -325,6 +326,24 @@ function metodoArr() {
                     }                 
                 }
             break;
+            case 'includes':
+            var argumentos = inputArgumentos.value;
+
+            if (argumentos.length == 0) alert('No has añadido ningún argumento');
+            else {
+                if (argumentos.indexOf(',') >= 0) alert('El método includes( ) solo necesita un argumento');
+                else {                      
+                    argumentos = argumentos.trim();
+                    var include = newArr.includes(argumentos);
+
+                    if (include == false) alert('Elemento no encontrado');
+                    else alert('El elemento "' + argumentos + '" se encuentra en el array');   
+
+                    Arrays.historyOfArray(nom, 'includes( )');
+                    inputArgumentos.value = '';
+                }                 
+            }
+        break;
         }
     }
 }
