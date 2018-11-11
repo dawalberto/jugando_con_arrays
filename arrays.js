@@ -118,6 +118,7 @@ function changeMethod() {
         case 'shift':
             document.getElementById('divArgs').style.display = 'none';
             document.getElementById('array2').style.display = 'none';
+            document.getElementById('divSort').style.display = 'none';
         break;
         case 'push':
         case 'indexof':
@@ -128,12 +129,19 @@ function changeMethod() {
         case 'includes':
             document.getElementById('divArgs').style.display = 'flex';            
             document.getElementById('array2').style.display = 'none';
+            document.getElementById('divSort').style.display = 'none';
         break;
         case 'concat':
             list2.selectedIndex = 0;
             document.getElementById('selectedArray2').value = '';
-            document.getElementById('divArgs').style.display = 'none';            
+            document.getElementById('divArgs').style.display = 'none';     
+            document.getElementById('divSort').style.display = 'none';
             document.getElementById('array2').style.display = 'flex';
+        break;
+        case 'sort':
+        document.getElementById('divArgs').style.display = 'none';
+        document.getElementById('array2').style.display = 'none';
+        document.getElementById('divSort').style.display = 'flex';
         break;
     }
     
@@ -172,7 +180,7 @@ function metodoArr() {
     var nom = document.getElementById('listArrs').value;
     var pos = Arrays.findPosByNom(nom);
     var inputArgumentos = document.getElementById('arguments');
-    var newArr = Arrays.arrs[pos];
+    var newArr = Arrays.findArrByNom(nom);
     var list = document.getElementById('listArrs');
     var list2 = document.getElementById('listArrs2');
     
@@ -327,23 +335,39 @@ function metodoArr() {
                 }
             break;
             case 'includes':
-            var argumentos = inputArgumentos.value;
+                var argumentos = inputArgumentos.value;
 
-            if (argumentos.length == 0) alert('No has añadido ningún argumento');
-            else {
-                if (argumentos.indexOf(',') >= 0) alert('El método includes( ) solo necesita un argumento');
-                else {                      
-                    argumentos = argumentos.trim();
-                    var include = newArr.includes(argumentos);
+                if (argumentos.length == 0) alert('No has añadido ningún argumento');
+                else {
+                    if (argumentos.indexOf(',') >= 0) alert('El método includes( ) solo necesita un argumento');
+                    else {                      
+                        argumentos = argumentos.trim();
+                        var include = newArr.includes(argumentos);
 
-                    if (include == false) alert('Elemento no encontrado');
-                    else alert('El elemento "' + argumentos + '" se encuentra en el array');   
+                        if (include == false) alert('Elemento no encontrado');
+                        else alert('El elemento "' + argumentos + '" se encuentra en el array');   
 
-                    Arrays.historyOfArray(nom, 'includes( )');
-                    inputArgumentos.value = '';
-                }                 
-            }
-        break;
+                        Arrays.historyOfArray(nom, 'includes( )');
+                        inputArgumentos.value = '';
+                    }                 
+                }
+            break;
+            case 'sort':
+                var radioNum = document.getElementById('radioNum').checked;
+                var radioAl = document.getElementById('radioAl').checked;
+                console.log(radioNum);
+                console.log(radioAl);
+
+                if (!radioNum && !radioAl) alert('Debes seleccionar una opción');
+                else {
+                    if (radioNum) newArr.sort((a, b) => {return a-b});
+                    else newArr.sort();
+
+                    Arrays.historyOfArray(nom, 'sort( )');
+
+                    refreshInputs(Arrays.findArrByNom(nom), Arrays.lengths[pos]);  
+                }
+            break;
         }
     }
 }
@@ -397,6 +421,8 @@ function cleanInputsAndCheckDevice() {
     document.getElementById('lengthArr').value = '';
     document.getElementById('arguments').value = '';
     document.getElementById('metodoArray').selectedIndex = 0;
+    document.getElementById('radioNum').checked = false;
+    document.getElementById('radioAl').checked = false;
 
     var widthDevice = screen.width;
 
