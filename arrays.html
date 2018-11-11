@@ -29,7 +29,7 @@
     .botonAncho {
         width: 80px;
     }
-    #array2, #divArgs, #divSort {
+    #array2, #divArgs, #divSort, #divFilter {
         display: none;
     }
     #helpMethod {
@@ -92,6 +92,20 @@
                 </div>
             </div>
         </div>
+        <div class="row align-items-end" id="divFilter">
+            <div class="col-2 text-right"><label for="condition" class="font-weight-light">CONDITION</label></div>
+            <div class="col-1">
+                <select class="form-control" name="condition" id="selectCondition">
+                    <option value="<">&lt;</option>
+                    <option value="<=">&lt;=</option>
+                    <option value=">">&gt;</option>
+                    <option value=">=">&gt;=</option>
+                    <option value="==">==</option>
+                    <option value="!=">!=</option>
+                </select>
+            </div>
+            <div class="col-1"><input class="form-control" type="text" id="argumentsFilter"></div>
+        </div>
         <div class="row align-items-end">
             <div class="col-2 text-right"><button type="button" class="btn btn-link" id="helpMethod" onclick="helpMethod()">METHOD</button></div>            
             <div class="col-2">
@@ -109,6 +123,7 @@
                     <option value="lastindexof">lastIndexOf( )</option>
                     <option value="includes">includes( )</option>
                     <option value="sort">sort( )</option>
+                    <option value="filter">filter( )</option>
                 </select>
             </div>
             <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()">MUTATE</button></div>

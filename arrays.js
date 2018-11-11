@@ -111,14 +111,20 @@ function changeListArr(dos) {
 function changeMethod() {
     var selectedMethod = document.getElementById('metodoArray').value;
     var list2 = document.getElementById('listArrs2');
+    
+    var divArgs = document.getElementById('divArgs');
+    var array2 = document.getElementById('array2');
+    var divSort = document.getElementById('divSort');
+    var divFilter = document.getElementById('divFilter');
 
     switch (selectedMethod) {
         case 'reverse':
         case 'pop':
         case 'shift':
-            document.getElementById('divArgs').style.display = 'none';
-            document.getElementById('array2').style.display = 'none';
-            document.getElementById('divSort').style.display = 'none';
+            divArgs.style.display = 'none';
+            array2.style.display = 'none';
+            divSort.style.display = 'none';
+            divFilter.style.display = 'none';
         break;
         case 'push':
         case 'indexof':
@@ -127,21 +133,30 @@ function changeMethod() {
         case 'unshift':
         case 'lastindexof':
         case 'includes':
-            document.getElementById('divArgs').style.display = 'flex';            
-            document.getElementById('array2').style.display = 'none';
-            document.getElementById('divSort').style.display = 'none';
+            divArgs.style.display = 'flex';            
+            array2.style.display = 'none';
+            divSort.style.display = 'none';
+            divFilter.style.display = 'none';
         break;
         case 'concat':
             list2.selectedIndex = 0;
             document.getElementById('selectedArray2').value = '';
-            document.getElementById('divArgs').style.display = 'none';     
-            document.getElementById('divSort').style.display = 'none';
-            document.getElementById('array2').style.display = 'flex';
+            divArgs.style.display = 'none';     
+            divSort.style.display = 'none';
+            array2.style.display = 'flex';
+            divFilter.style.display = 'none';
         break;
         case 'sort':
-        document.getElementById('divArgs').style.display = 'none';
-        document.getElementById('array2').style.display = 'none';
-        document.getElementById('divSort').style.display = 'flex';
+            divArgs.style.display = 'none';
+            array2.style.display = 'none';
+            divSort.style.display = 'flex';
+            divFilter.style.display = 'none';
+        break;
+        case 'filter':
+            divFilter.style.display = 'flex';
+            divArgs.style.display = 'none';
+            array2.style.display = 'none';
+            divSort.style.display = 'none';
         break;
     }
     
@@ -368,6 +383,9 @@ function metodoArr() {
                     refreshInputs(Arrays.findArrByNom(nom), Arrays.lengths[pos]);  
                 }
             break;
+            case 'filter':
+                
+            break;
         }
     }
 }
@@ -399,7 +417,7 @@ function navegador() {
 function helpMethod() {
     
     if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la definición y uso de cada método');
-    else if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
+    if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
     else {
         openWindowMethods()
     }
