@@ -195,7 +195,7 @@ function metodoArr() {
     var nom = document.getElementById('listArrs').value;
     var pos = Arrays.findPosByNom(nom);
     var inputArgumentos = document.getElementById('arguments');
-    var newArr = Arrays.findArrByNom(nom);
+    var currentArray = Arrays.findArrByNom(nom);
     var list = document.getElementById('listArrs');
     var list2 = document.getElementById('listArrs2');
     
@@ -207,16 +207,16 @@ function metodoArr() {
     else {
         switch (metodo) {
             case 'reverse':
-                newArr = newArr.reverse();
-                document.getElementById('selectedArray').value = newArr;
+                currentArray = currentArray.reverse();
+                document.getElementById('selectedArray').value = currentArray;
                 Arrays.historyOfArray(nom, 'reverse( )');
             break;
             case 'pop':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
-                    alert('Eliminado el elemento ' + '"' + newArr[newArr.length - 1] + '"');
-                    newArr.pop();
-                    Arrays.lengths[pos] = newArr.length;
+                    alert('Eliminado el elemento ' + '"' + currentArray[currentArray.length - 1] + '"');
+                    currentArray.pop();
+                    Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'pop( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
@@ -231,9 +231,9 @@ function metodoArr() {
                     argumentos = argumentos.map(e => e.trim());
 
                     for (let i = 0; i < argumentos.length; i++) {
-                        newArr.push(argumentos[i]);
+                        currentArray.push(argumentos[i]);
                     }
-                    Arrays.lengths[pos] = newArr.length;
+                    Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'push( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
@@ -247,10 +247,10 @@ function metodoArr() {
                     if (argumentos.indexOf(',') >= 0) alert('El método indexOf( ) solo necesita un argumento');
                     else {                      
                         argumentos = argumentos.trim();
-                        var posIndexOf = newArr.indexOf(argumentos);
+                        var posIndexOf = currentArray.indexOf(argumentos);
 
                         if (posIndexOf < 0) alert('Elemento no encontrado');
-                        else alert('Elemento ' + '"' + newArr[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
+                        else alert('Elemento ' + '"' + currentArray[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
 
                         Arrays.historyOfArray(nom, 'indexOf( )');
                         inputArgumentos.value = '';
@@ -265,7 +265,7 @@ function metodoArr() {
                     if (argumentos.indexOf(',') >= 0) alert('El método fill( ) solo necesita un argumento');
                     else {
                         argumentos = argumentos.trim();
-                        newArr = newArr.fill(argumentos);
+                        currentArray = currentArray.fill(argumentos);
                         Arrays.historyOfArray(nom, 'fill( )');
 
                         refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
@@ -275,9 +275,9 @@ function metodoArr() {
             case 'shift':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
-                    alert('Eliminado el elemento ' + '"' + newArr.shift() + '"');
+                    alert('Eliminado el elemento ' + '"' + currentArray.shift() + '"');
 
-                    Arrays.lengths[pos] = newArr.length;
+                    Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'shift( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
@@ -291,9 +291,9 @@ function metodoArr() {
                     argumentos = argumentos.split(',');
                     argumentos = argumentos.map(e => e.trim());
 
-                    newArr.splice(...argumentos);
+                    currentArray.splice(...argumentos);
                         
-                    Arrays.lengths[pos] = newArr.length;
+                    Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'splice( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);
@@ -308,9 +308,9 @@ function metodoArr() {
                     argumentos = argumentos.map(e => e.trim());
 
                     for (let i = argumentos.length - 1; i >= 0 ; i--) {
-                        newArr.unshift(argumentos[i]);
+                        currentArray.unshift(argumentos[i]);
                     }
-                    Arrays.lengths[pos] = newArr.length;
+                    Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'unshift( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
@@ -339,10 +339,10 @@ function metodoArr() {
                     if (argumentos.indexOf(',') >= 0) alert('El método lastIndexOf( ) solo necesita un argumento');
                     else {                      
                         argumentos = argumentos.trim();
-                        var posLastIndexOf = newArr.lastIndexOf(argumentos);
+                        var posLastIndexOf = currentArray.lastIndexOf(argumentos);
 
                         if (posLastIndexOf < 0) alert('Elemento no encontrado');
-                        else alert('Elemento ' + '"' + newArr[posLastIndexOf] + '"' + ' en posición ' + posLastIndexOf);   
+                        else alert('Elemento ' + '"' + currentArray[posLastIndexOf] + '"' + ' en posición ' + posLastIndexOf);   
 
                         Arrays.historyOfArray(nom, 'lastIndexOf( )');
                         inputArgumentos.value = '';
@@ -357,7 +357,7 @@ function metodoArr() {
                     if (argumentos.indexOf(',') >= 0) alert('El método includes( ) solo necesita un argumento');
                     else {                      
                         argumentos = argumentos.trim();
-                        var include = newArr.includes(argumentos);
+                        var include = currentArray.includes(argumentos);
 
                         if (include == false) alert('Elemento no encontrado');
                         else alert('El elemento "' + argumentos + '" se encuentra en el array');   
@@ -370,13 +370,11 @@ function metodoArr() {
             case 'sort':
                 var radioNum = document.getElementById('radioNum').checked;
                 var radioAl = document.getElementById('radioAl').checked;
-                console.log(radioNum);
-                console.log(radioAl);
 
                 if (!radioNum && !radioAl) alert('Debes seleccionar una opción');
                 else {
-                    if (radioNum) newArr.sort((a, b) => {return a-b});
-                    else newArr.sort();
+                    if (radioNum) currentArray.sort((a, b) => {return a-b});
+                    else currentArray.sort();
 
                     Arrays.historyOfArray(nom, 'sort( )');
 
@@ -384,7 +382,44 @@ function metodoArr() {
                 }
             break;
             case 'filter':
-                
+                var argumentsFilter = document.getElementById('argumentsFilter').value;
+                var condition = document.getElementById('selectCondition').value;
+
+                if (argumentsFilter.length == 0) alert('No has añadido ningún valor');
+                else {
+                    if (argumentsFilter.indexOf(',') >= 0) alert('Solo es necesario un valor, si deseas utilizar un número decimal utilice . en lugar de ,');
+                    else {
+                        switch (condition) {
+                            case '<':
+                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e < argumentsFilter);
+                                else var arrFilter = currentArray.filter(e => e < Number(argumentsFilter));
+                            break;
+                            case '<=':
+                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e <= argumentsFilter);
+                                else var arrFilter = currentArray.filter(e => e <= Number(argumentsFilter));
+                            break;
+                            case '>':
+                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e > argumentsFilter);
+                                else var arrFilter = currentArray.filter(e => e > Number(argumentsFilter));
+                            break;
+                            case '>=':
+                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e >= argumentsFilter);
+                                else var arrFilter = currentArray.filter(e => e >= Number(argumentsFilter));
+                            break;
+                            case '==':
+                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e == argumentsFilter);
+                                else var arrFilter = currentArray.filter(e => e == Number(argumentsFilter));
+                            break;
+                            case '!=':
+                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e != argumentsFilter);
+                                else var arrFilter = currentArray.filter(e => e != Number(argumentsFilter));
+                            break;
+                        }
+                        alert(nom + '.filter(e => e ' + condition + ' ' +argumentsFilter + ');\n \n' + arrFilter + '\n \n length ' + arrFilter.length);
+
+                    Arrays.historyOfArray(nom, 'filter( )');
+                    }
+                }
             break;
         }
     }
@@ -441,6 +476,7 @@ function cleanInputsAndCheckDevice() {
     document.getElementById('metodoArray').selectedIndex = 0;
     document.getElementById('radioNum').checked = false;
     document.getElementById('radioAl').checked = false;
+    document.getElementById('argumentsFilter').value = '';
 
     var widthDevice = screen.width;
 
