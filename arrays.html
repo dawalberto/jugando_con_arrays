@@ -14,7 +14,7 @@
     body {
         background-color: rgb(42, 44, 46);
     }
-    label {
+    label, .display-3 {
         color: white;
     }
     .container {
@@ -32,6 +32,12 @@
     }
     #helpMethod {
         padding-right: 0;
+    }
+    .yourCode {
+        margin-left: 50px;
+        margin-right: 50px;
+        height: 300px;
+        background-color: #1a1a1a;
     }
 </style>
 <body onload="onPageLoad()">
@@ -125,6 +131,12 @@
                 </select>
             </div>
             <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()" id="btnMutate">MUTATE</button></div>
+        </div>
+        <div class="row justify-content-md-center">
+            <p class="display-3">YOUR CODE</p>
+        </div>
+        <div class="row yourCode">
+
         </div>
     </div>
 </body>
