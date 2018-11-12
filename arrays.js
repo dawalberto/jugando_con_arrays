@@ -451,7 +451,7 @@ function navegador() {
 
 function helpMethod() {
     
-    if (navegador() == 'chrome') alert('Abra esta página en otro navegador que no sea Google Chrome para poder ver la definición y uso de cada método');
+    if (navegador() == 'explorer') alert('Abra esta página en otro navegador que no sea Internet Explorer para poder ver la definición y uso de cada método');
     if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
     else {
         openWindowMethods()
