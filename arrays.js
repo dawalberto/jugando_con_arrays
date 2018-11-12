@@ -440,9 +440,51 @@ function navegadorLanguage() {
     var navegadorL = navigator.language;
 
     var lblAddArray = document.getElementById('lblAddArray');
+    var btnAddArray = document.getElementById('btnAddArray');
+    var lblSelectArray = document.getElementById('lblSelectArray');
+    var btnDeleteArray = document.getElementById('btnDeleteArray');
+    var lblSelectArray2 = document.getElementById('lblSelectArray2');
+    var lblLength = document.getElementById('lblLength');
+    var lblAddArguments = document.getElementById('lblAddArguments');
+    var lblOrderSort = document.getElementById('lblOrderSort');
+    var lblOrderNum = document.getElementById('lblOrderNum');
+    var lblOrderAlf = document.getElementById('lblOrderAlf');
+    var lblFilterCondition = document.getElementById('lblFilterCondition');
+    var helpMethod = document.getElementById('helpMethod');
+    var btnMutate = document.getElementById('btnMutate');
 
-    if (navegadorL == 'es-ES') lblAddArray.textContent = "AÑADIR ARRAY";
-    if (navegadorL == 'en') lblAddArray.textContent = "ADD ARRAY";
+
+    if (navegadorL == 'es-ES' || navegadorL == 'es') {
+        lblAddArray.textContent = "AÑADIR ARRAY";
+        btnAddArray.textContent = "AÑADIR";
+        lblSelectArray.textContent = "SELECCIONAR ARRAY";
+        btnDeleteArray.textContent = "ELIMINAR";
+        lblSelectArray2.textContent = "SELECCIONAR ARRAY 2";
+        lblLength.textContent = "LONGITUD";
+        lblAddArguments.textContent = "AÑADIR ARGUMENTOS";
+        lblOrderSort.textContent = "ORDENADO";
+        lblOrderNum.textContent = "NUMÉRICAMENTE";
+        lblOrderAlf.textContent = "ALFABÉTICAMENTE";
+        lblFilterCondition.textContent = "CONDICIÓN";
+        helpMethod.textContent = "MÉTODO";
+        btnMutate.textContent = "MUTAR";
+    }
+
+    if (navegadorL == 'en') {
+        lblAddArray.textContent = "ADD ARRAY";
+        btnAddArray.textContent = "ADD";
+        lblSelectArray.textContent = "SELECT ARRAY";
+        btnDeleteArray.textContent = "DELETE";
+        lblSelectArray2.textContent = "SELECT ARRAY 2";
+        lblLength.textContent = "LENGTH";
+        lblAddArguments.textContent = "ADD ARGUMENTS";
+        lblOrderSort.textContent = "ORDERED";
+        lblOrderNum.textContent = "NUMERICALLY";
+        lblOrderAlf.textContent = "ALPHABETICALLY";
+        lblFilterCondition.textContent = "CONDITION";
+        helpMethod.textContent = "METHOD";
+        btnMutate.textContent = "MUTATE";
+    }
 }
 
 

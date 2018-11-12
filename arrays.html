@@ -25,7 +25,7 @@
         padding-top: 15px;
     }
     .botonAncho {
-        width: 80px;
+        width: 90px;
     }
     #array2, #divArgs, #divSort, #divFilter {
         display: none;
@@ -40,20 +40,20 @@
             <div class="col-2 text-right"><label for="nomArr" class="font-weight-light" id="lblAddArray">ADD ARRAY</label></div>
             <div class="col-2"><input class="form-control" type="text" id="nomArr" placeholder="vowels"></div>
             <div class="col-6"><input class="form-control" type="text" id="elementsArr" placeholder="a, e, i, o, u"></div>
-            <div class="col-1"><button class="btn btn-outline-success botonAncho" onclick="addArr()">ADD</button></div>
+            <div class="col-1"><button class="btn btn-outline-success botonAncho" onclick="addArr()" id="btnAddArray">ADD</button></div>
         </div>
         <div class="row align-items-end">
-            <div class="col-2 text-right"><label for="listArrs" class="font-weight-light">SELECT ARRAY</label></div>
+            <div class="col-2 text-right"><label for="listArrs" class="font-weight-light" id="lblSelectArray">SELECT ARRAY</label></div>
             <div class="col-2">
                 <select class="form-control" name="listArrs" id="listArrs" onchange="changeListArr()">
                     <option value="" disabled selected>Select</option>
                 </select>
             </div>
             <div class="col-6"><input class="form-control" type="text" id="selectedArray" readonly></div>
-            <div class="col-1"><button class="btn btn-outline-danger botonAncho" onclick="deleteArr()">DELETE</button></div>
+            <div class="col-1"><button class="btn btn-outline-danger botonAncho" onclick="deleteArr()" id="btnDeleteArray">DELETE</button></div>
         </div>
         <div class="row align-items-end" id="array2">
-            <div class="col-2 text-right"><label for="listArrs2" class="font-weight-light">SELECT ARRAY 2</label></div>
+            <div class="col-2 text-right"><label for="listArrs2" class="font-weight-light" id="lblSelectArray2">SELECT ARRAY 2</label></div>
             <div class="col-2">
                 <select class="form-control" name="listArrs2" id="listArrs2" onchange="changeListArr('dos')">
                     <option value="" disabled selected>Select</option>
@@ -62,7 +62,7 @@
             <div class="col-6"><input class="form-control" type="text" id="selectedArray2" readonly></div>
         </div>
         <div class="row align-items-end">
-            <div class="col-2 text-right"><label for="lengthArr" class="font-weight-light">LENGTH</label></div>
+            <div class="col-2 text-right"><label for="lengthArr" class="font-weight-light" id="lblLength">LENGTH</label></div>
             <div class="col-2"><input class="form-control" id="lengthArr" type="text" readonly></div>
             <div class="col-1">
                     <button type="button" class="btn btn-outline-secondary rounded-circle" data-toggle="popover" data-placement="right" data-html="true"
@@ -74,24 +74,24 @@
             </div>
         </div>
         <div class="row align-items-end" id="divArgs">
-            <div class="col-2 text-right"><label for="arguments" class="font-weight-light">ADD ARGUMENTS</label></div>
+            <div class="col-2 text-right"><label for="arguments" class="font-weight-light" id="lblAddArguments">ADD ARGUMENTS</label></div>
             <div class="col-2"><input class="form-control" type="text" id="arguments"></div>
         </div>
         <div class="row align-items-end" id="divSort">
-            <div class="col-2 text-right"><label for="arguments" class="font-weight-light">ORDERED</label></div>
+            <div class="col-2 text-right"><label for="arguments" class="font-weight-light" id="lblOrderSort">ORDERED</label></div>
             <div class="col-5 align-self-start">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="radioSort" id="radioNum" value="num">
-                    <label class="form-check-label" for="radioNum">NUMERICALLY</label>
+                    <label class="form-check-label" for="radioNum" id="lblOrderNum">NUMERICALLY</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="radioSort" id="radioAl" value="alf">
-                    <label class="form-check-label" for="radioAl">ALPHABETICALLY</label>
+                    <label class="form-check-label" for="radioAl" id="lblOrderAlf">ALPHABETICALLY</label>
                 </div>
             </div>
         </div>
         <div class="row align-items-end" id="divFilter">
-            <div class="col-2 text-right"><label for="condition" class="font-weight-light">CONDITION</label></div>
+            <div class="col-2 text-right"><label for="condition" class="font-weight-light" id="lblFilterCondition">CONDITION</label></div>
             <div class="col-1">
                 <select class="form-control" name="condition" id="selectCondition">
                     <option value="<">&lt;</option>
@@ -124,7 +124,7 @@
                     <option value="filter">filter( )</option>
                 </select>
             </div>
-            <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()">MUTATE</button></div>
+            <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()" id="btnMutate">MUTATE</button></div>
         </div>
     </div>
 </body>
