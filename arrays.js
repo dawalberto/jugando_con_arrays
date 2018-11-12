@@ -52,6 +52,7 @@ function addArr() {
     var nomArr = document.getElementById('nomArr').value;
     var elements = document.getElementById('elementsArr').value;
     var list = document.getElementById('listArrs');
+    var resHTML = document.getElementById('divYourCode');
 
     if (elements.length === 0 || nomArr.length === 0) alert('Introduzca un nombre y uno o más elementos para añadir un array');
     else {
@@ -79,6 +80,7 @@ function addArr() {
             document.getElementById('selectedArray').value = Arrays.arrs[Arrays.arrs.length - 1];
             document.getElementById('lengthArr').value = Arrays.lengths[Arrays.arrs.length - 1];
 
+            resHTML.innerHTML += createCodeHTML(nomArr, elements);
             fillSelectArr2(nomArr);
         }
     }
@@ -517,4 +519,24 @@ function onPageLoad() {
     }
 
     navegadorLanguage();
+}
+
+
+function createCodeHTML(nom, element) {
+    var codeHTML = '<pre><code class="code"><var class="keyWord">var</var> <var>' + nom + '</var> = ['; 
+
+    for (let i = 0; i < element.length; i++) {
+        if (i == element.length - 1) {
+            if (isNaN(element[i])) codeHTML += '<var class="strings">"' + element[i] + '"</var>';
+            else codeHTML += '<var class="nums">' + element[i] + '</var>';
+        }
+        else {
+            if (isNaN(element[i])) codeHTML += '<var class="strings">"' + element[i] + '"</var>, ';
+            else codeHTML += '<var class="nums">' + element[i] + '</var>, ';
+        }
+    }
+
+    codeHTML += ']</code></pre>';
+
+    return codeHTML;
 }

@@ -1,0 +1,18 @@
+.keyWord {
+    color: #3399ff;
+}
+.nums {
+    color: #66ffcc;
+}
+.strings {
+    color: #ff9933;
+}
+.method {
+    color: #ff33cc;
+}
+.coments {
+    color: #336600;
+}
+.code {
+    color: white;       
+}
