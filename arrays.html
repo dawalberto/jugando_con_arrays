@@ -34,10 +34,10 @@
         padding-right: 0;
     }
 </style>
-<body onload="cleanInputsAndCheckDevice()">
+<body onload="onPageLoad()">
     <div class="container">
         <div class="row align-items-end">
-            <div class="col-2 text-right"><label for="nomArr" class="font-weight-light">ADD ARRAY</label></div>
+            <div class="col-2 text-right"><label for="nomArr" class="font-weight-light" id="lblAddArray">ADD ARRAY</label></div>
             <div class="col-2"><input class="form-control" type="text" id="nomArr" placeholder="vowels"></div>
             <div class="col-6"><input class="form-control" type="text" id="elementsArr" placeholder="a, e, i, o, u"></div>
             <div class="col-1"><button class="btn btn-outline-success botonAncho" onclick="addArr()">ADD</button></div>
@@ -105,7 +105,7 @@
             <div class="col-1"><input class="form-control" type="text" id="argumentsFilter"></div>
         </div>
         <div class="row align-items-end">
-            <div class="col-2 text-right"><button type="button" class="btn btn-link" id="helpMethod" onclick="helpMethod()">METHOD</button></div>            
+            <div class="col-2 text-right"><button type="button" class="btn btn-link" id="helpMethod" onclick="openWindowMethods()">METHOD</button></div>            
             <div class="col-2">
                 <select class="form-control" name="metodoArray" id="metodoArray" onchange="changeMethod()" >
                     <option value="" disabled selected>Select</option>

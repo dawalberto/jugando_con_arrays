@@ -436,35 +436,25 @@ function mutate() {
 }
 
 
-function navegador() {
-    var navegador = "";
+function navegadorLanguage() {
+    var navegadorL = navigator.language;
 
-    if (navigator.userAgent.toUpperCase().indexOf("EDGE") > 0) navegador = "edge";
-    if (navigator.userAgent.toUpperCase().indexOf("FIREFOX") > 0) navegador = "firefox";
-    if (navigator.userAgent.toUpperCase().indexOf("OPR") > 0) navegador = "opera";
-    if (navigator.userAgent.toUpperCase().indexOf("CHROME") > 0 && navegador == "") navegador = "chrome"
-    else if (navegador == "") navegador = "explorer";
+    var lblAddArray = document.getElementById('lblAddArray');
 
-    return navegador;
-}
-
-
-function helpMethod() {
-    
-    if (navegador() == 'explorer') alert('Abra esta página en otro navegador que no sea Internet Explorer para poder ver la definición y uso de cada método');
-    if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
-    else {
-        openWindowMethods()
-    }
+    if (navegadorL == 'es-ES') lblAddArray.textContent = "AÑADIR ARRAY";
+    if (navegadorL == 'en') lblAddArray.textContent = "ADD ARRAY";
 }
 
 
 function openWindowMethods() {
-    window.open('./methods.html', '', 'top=85px, left=10px, width=600px, height=500px');
+    if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
+    else {
+        window.open('./methods.html', '', 'top=85px, left=10px, width=600px, height=500px');
+    }
 }
 
 
-function cleanInputsAndCheckDevice() {
+function onPageLoad() {
     document.getElementById('nomArr').value = '';
     document.getElementById('elementsArr').value = '';   
     document.getElementById('listArrs').selectedIndex = 0;
@@ -483,4 +473,6 @@ function cleanInputsAndCheckDevice() {
     if (widthDevice < 400) {
         alert('Esta página todavía no está optimizada para móviles. Estamos trabajando en ello.');
     }
+
+    navegadorLanguage();
 }
