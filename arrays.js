@@ -261,7 +261,7 @@ function metodoArr() {
                         var posIndexOf = currentArray.indexOf(argumentos);
 
                         if (posIndexOf < 0) alert('Elemento no encontrado');
-                        else alert('Elemento ' + '"' + currentArray[posIndexOf] + '"' + ' en posición ' + posIndexOf);   
+                        else alert('ELEMENTO ' + '"' + currentArray[posIndexOf] + '"' + ' EN POSICIÓN ' + posIndexOf);   
 
                         Arrays.historyOfArray(nom, 'indexOf( )');
                         inputArgumentos.value = '';
@@ -349,7 +349,7 @@ function metodoArr() {
                     var nomArr2 = Arrays.noms[Arrays.findPosByNom(list2.value)];
 
                     Arrays.historyOfArray(nom, 'concat( )');
-                    alert(nomArr1 + '.concat(' + nomArr2 +'); \n \n' + arrConcat + '\n \nlength: ' + arrConcat.length);                  
+                    alert('RESULTADO: ' + arrConcat + '\n \nLENGTH: ' + arrConcat.length);                  
                 }
             break;
             case 'lastindexof':
@@ -362,8 +362,8 @@ function metodoArr() {
                         argumentos = argumentos.trim();
                         var posLastIndexOf = currentArray.lastIndexOf(argumentos);
 
-                        if (posLastIndexOf < 0) alert('Elemento no encontrado');
-                        else alert('Elemento ' + '"' + currentArray[posLastIndexOf] + '"' + ' en posición ' + posLastIndexOf);   
+                        if (posLastIndexOf < 0) alert('ELEMENTO NO ENCONTRADO');
+                        else alert('ELEMENTO ' + '"' + currentArray[posLastIndexOf] + '"' + ' EN POSICIÓN ' + posLastIndexOf);   
 
                         Arrays.historyOfArray(nom, 'lastIndexOf( )');
                         inputArgumentos.value = '';
@@ -382,8 +382,8 @@ function metodoArr() {
                         argumentos = argumentos.trim();
                         var include = currentArray.includes(argumentos);
 
-                        if (include == false) alert('Elemento no encontrado');
-                        else alert('El elemento "' + argumentos + '" se encuentra en el array');   
+                        if (include == false) alert('ELEMENTO NO ENCONTRADO');
+                        else alert('ELEMENTO "' + argumentos + '" ENCONTRADO');   
 
                         Arrays.historyOfArray(nom, 'includes( )');
                         inputArgumentos.value = '';
