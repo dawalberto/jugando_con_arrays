@@ -81,31 +81,11 @@ function addArr() {
             document.getElementById('selectedArray').value = Arrays.arrs[Arrays.arrs.length - 1];
             document.getElementById('lengthArr').value = Arrays.lengths[Arrays.arrs.length - 1];
 
-            printCode(nomArr, elements);
+            printCodeHTML('add', nomArr, elements);
 
             fillSelectArr2(nomArr);
         }
     }
-}
-
-
-function printCode(nomArr, elements) {
-    var resHTML = document.getElementById('divYourCode');
-
-    numLineasCode++;
-    
-        if (numLineasCode <= 9) {
-            resHTML.innerHTML += '<span>&nbsp&nbsp&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(nomArr, elements) + '<br />';
-            console.log("default");
-        }
-        if  (numLineasCode > 9) {
-            resHTML.innerHTML += '<span>&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(nomArr, elements) + '<br />';
-            console.log(">9");
-        }
-
-        if (numLineasCode > 99)
-            resHTML.innerHTML += '<span>' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(nomArr, elements) + '<br />';
-
 }
 
 
@@ -233,7 +213,10 @@ function metodoArr() {
             case 'reverse':
                 currentArray = currentArray.reverse();
                 document.getElementById('selectedArray').value = currentArray;
+
                 Arrays.historyOfArray(nom, 'reverse( )');
+
+                printCodeHTML(metodo, nom);
             break;
             case 'pop':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
@@ -244,6 +227,8 @@ function metodoArr() {
                     Arrays.historyOfArray(nom, 'pop( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
+
+                    printCodeHTML(metodo, nom);
                 }
             break;
             case 'push':
@@ -305,6 +290,8 @@ function metodoArr() {
                     Arrays.historyOfArray(nom, 'shift( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
+
+                    printCodeHTML(metodo, nom);
                 }
             break;
             case 'splice':
@@ -449,6 +436,54 @@ function metodoArr() {
     }
 }
 
+
+function printCodeHTML(method, nomArr, elements) {
+    var resHTML = document.getElementById('divYourCode');
+
+    numLineasCode++;
+    
+        if (numLineasCode <= 9)
+            resHTML.innerHTML += '<span>&nbsp&nbsp&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, elements) + '<br />';
+
+        if  (numLineasCode > 9) 
+            resHTML.innerHTML += '<span>&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, elements) + '<br />';
+
+        if (numLineasCode > 99)
+            resHTML.innerHTML += '<span>' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, elements) + '<br />';
+}
+
+
+function createCodeHTML(method, nomArr, elements) {
+    var codeHTML;
+
+    switch (method) {
+        case 'add':
+            codeHTML = '<code class="code"><var class="keyWord">var</var> <var>' + nomArr + '</var> = ['; 
+
+            for (let i = 0; i < elements.length; i++) {
+                if (i == elements.length - 1) {
+                    if (isNaN(elements[i])) codeHTML += '<var class="strings">"' + elements[i] + '"</var>';
+                    else codeHTML += '<var class="nums">' + elements[i] + '</var>';
+                }
+                else {
+                    if (isNaN(elements[i])) codeHTML += '<var class="strings">"' + elements[i] + '"</var>, ';
+                    else codeHTML += '<var class="nums">' + elements[i] + '</var>, ';
+                }
+            }
+        
+            codeHTML += '];</code>';
+        break;
+        case 'reverse':
+        case 'pop':
+        case 'shift':
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>();'
+        break;
+    }
+
+    return codeHTML;
+}
+
+
 function refreshInputs(selected, length) {
     document.getElementById('selectedArray').value = selected;
     document.getElementById('lengthArr').value = length    
@@ -544,24 +579,4 @@ function onPageLoad() {
     }
 
     navegadorLanguage();
-}
-
-
-function createCodeHTML(nom, element) {
-    var codeHTML = '<code class="code"><var class="keyWord">var</var> <var>' + nom + '</var> = ['; 
-
-    for (let i = 0; i < element.length; i++) {
-        if (i == element.length - 1) {
-            if (isNaN(element[i])) codeHTML += '<var class="strings">"' + element[i] + '"</var>';
-            else codeHTML += '<var class="nums">' + element[i] + '</var>';
-        }
-        else {
-            if (isNaN(element[i])) codeHTML += '<var class="strings">"' + element[i] + '"</var>, ';
-            else codeHTML += '<var class="nums">' + element[i] + '</var>, ';
-        }
-    }
-
-    codeHTML += '];</code>';
-
-    return codeHTML;
 }
