@@ -263,6 +263,8 @@ function metodoArr() {
 
                         Arrays.historyOfArray(nom, 'indexOf( )');
                         inputArgumentos.value = '';
+
+                        printCodeHTML('indexOf', nom, argumentos);
                     }                 
                 }
             break;
@@ -278,6 +280,8 @@ function metodoArr() {
                         Arrays.historyOfArray(nom, 'fill( )');
 
                         refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]); 
+
+                        printCodeHTML(metodo, nom, argumentos);
                     }
                 }
             break;
@@ -357,6 +361,8 @@ function metodoArr() {
 
                         Arrays.historyOfArray(nom, 'lastIndexOf( )');
                         inputArgumentos.value = '';
+
+                        printCodeHTML('lastIndexOf', nom, argumentos);
                     }                 
                 }
             break;
@@ -375,6 +381,8 @@ function metodoArr() {
 
                         Arrays.historyOfArray(nom, 'includes( )');
                         inputArgumentos.value = '';
+
+                        printCodeHTML(metodo, nom, argumentos);
                     }                 
                 }
             break;
@@ -428,7 +436,9 @@ function metodoArr() {
                         }
                         alert(nom + '.filter(e => e ' + condition + ' ' +argumentsFilter + ');\n \n' + arrFilter + '\n \n length ' + arrFilter.length);
 
-                    Arrays.historyOfArray(nom, 'filter( )');
+                        document.getElementById('argumentsFilter').value = '';
+                        
+                        Arrays.historyOfArray(nom, 'filter( )');
                     }
                 }
             break;
@@ -437,47 +447,60 @@ function metodoArr() {
 }
 
 
-function printCodeHTML(method, nomArr, elements) {
+function printCodeHTML(method, nomArr, argumentos) {
     var resHTML = document.getElementById('divYourCode');
 
     numLineasCode++;
     
         if (numLineasCode <= 9)
-            resHTML.innerHTML += '<span>&nbsp&nbsp&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, elements) + '<br />';
+            resHTML.innerHTML += '<span>&nbsp&nbsp&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, argumentos) + '<br />';
 
         if  (numLineasCode > 9) 
-            resHTML.innerHTML += '<span>&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, elements) + '<br />';
+            resHTML.innerHTML += '<span>&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, argumentos) + '<br />';
 
         if (numLineasCode > 99)
-            resHTML.innerHTML += '<span>' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, elements) + '<br />';
+            resHTML.innerHTML += '<span>' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, argumentos) + '<br />';
 }
 
 
-function createCodeHTML(method, nomArr, elements) {
+function createCodeHTML(method, nomArr, argumentos) {
     var codeHTML;
 
     switch (method) {
+        //CREAR ARRAY
         case 'add':
             codeHTML = '<code class="code"><var class="keyWord">var</var> <var>' + nomArr + '</var> = ['; 
 
-            for (let i = 0; i < elements.length; i++) {
-                if (i == elements.length - 1) {
-                    if (isNaN(elements[i])) codeHTML += '<var class="strings">"' + elements[i] + '"</var>';
-                    else codeHTML += '<var class="nums">' + elements[i] + '</var>';
+            for (let i = 0; i < argumentos.length; i++) {
+                if (i == argumentos.length - 1) {
+                    if (isNaN(argumentos[i])) codeHTML += '<var class="strings">"' + argumentos[i] + '"</var>';
+                    else codeHTML += '<var class="nums">' + argumentos[i] + '</var>';
                 }
                 else {
-                    if (isNaN(elements[i])) codeHTML += '<var class="strings">"' + elements[i] + '"</var>, ';
-                    else codeHTML += '<var class="nums">' + elements[i] + '</var>, ';
+                    if (isNaN(argumentos[i])) codeHTML += '<var class="strings">"' + argumentos[i] + '"</var>, ';
+                    else codeHTML += '<var class="nums">' + argumentos[i] + '</var>, ';
                 }
             }
         
             codeHTML += '];</code>';
         break;
+        //MÉTODOS QUE NO NECESITAN ARGUMENTOS
         case 'reverse':
         case 'pop':
         case 'shift':
-            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>();'
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>();';
         break;
+        //MÉTODOS QUE SOLO NECESITAN UN ARGUMENTO
+        case 'indexOf':
+        case 'fill':
+        case 'lastIndexOf':
+        case 'includes':
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(';
+
+            if (isNaN(argumentos)) codeHTML += '<var class="strings">"' + argumentos + '"</var>);';
+            else codeHTML += '<var class="nums">' + argumentos + '</var>);';
+        break;
+
     }
 
     return codeHTML;
