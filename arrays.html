@@ -18,9 +18,8 @@
     label, .display-3 {
         color: white;
     }
-    .container {
-        width: 100vw;
-        max-width: 100vw;
+    span {
+        color: #383737;
     }
     .row {
         padding-top: 15px;
@@ -28,17 +27,30 @@
     .botonAncho {
         width: 90px;
     }
+    .yourCode {
+        margin-left: 150px;
+        margin-right: 150px;
+        padding-left: 15px;
+        height: 400px;
+        background-color: #1a1a1a;
+        overflow: auto;
+    }
+    .divlblCode {
+        padding-top: 45px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100vw;
+        max-width: 100vw;
+    }
     #array2, #divArgs, #divSort, #divFilter {
         display: none;
     }
     #helpMethod {
         padding-right: 0;
-    }
-    .yourCode {
-        margin-left: 50px;
-        margin-right: 50px;
-        height: 300px;
-        background-color: #1a1a1a;
     }
 </style>
 <body onload="onPageLoad()">
@@ -133,11 +145,11 @@
             </div>
             <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()" id="btnMutate">MUTATE</button></div>
         </div>
-        <div class="row justify-content-md-center">
-            <p class="display-3">WATCH YOUR CODE</p>
+        <div class="row justify-content-md-center divlblCode">
+            <p class="display-3" id="lblWatchCode">WATCH YOUR CODE</p>
         </div>
-        <div class="row yourCode" id="divYourCode">
-
+        <div class="row yourCode" >
+            <div id="divYourCode"></div>
         </div>
     </div>
 </body>

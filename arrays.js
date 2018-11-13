@@ -37,7 +37,6 @@ var Arrays = {
         console.log('elemets', this.arrs);
         console.log('length', this.lengths);
         console.log('history', this.history);
-
     }
 }
 
@@ -48,11 +47,13 @@ $(function () {
 });
 
 
+var numLineasCode = 0;
+
+
 function addArr() {
     var nomArr = document.getElementById('nomArr').value;
     var elements = document.getElementById('elementsArr').value;
     var list = document.getElementById('listArrs');
-    var resHTML = document.getElementById('divYourCode');
 
     if (elements.length === 0 || nomArr.length === 0) alert('Introduzca un nombre y uno o más elementos para añadir un array');
     else {
@@ -80,10 +81,31 @@ function addArr() {
             document.getElementById('selectedArray').value = Arrays.arrs[Arrays.arrs.length - 1];
             document.getElementById('lengthArr').value = Arrays.lengths[Arrays.arrs.length - 1];
 
-            resHTML.innerHTML += createCodeHTML(nomArr, elements);
+            printCode(nomArr, elements);
+
             fillSelectArr2(nomArr);
         }
     }
+}
+
+
+function printCode(nomArr, elements) {
+    var resHTML = document.getElementById('divYourCode');
+
+    numLineasCode++;
+    
+        if (numLineasCode <= 9) {
+            resHTML.innerHTML += '<span>&nbsp&nbsp&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(nomArr, elements) + '<br />';
+            console.log("default");
+        }
+        if  (numLineasCode > 9) {
+            resHTML.innerHTML += '<span>&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(nomArr, elements) + '<br />';
+            console.log(">9");
+        }
+
+        if (numLineasCode > 99)
+            resHTML.innerHTML += '<span>' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(nomArr, elements) + '<br />';
+
 }
 
 
@@ -454,38 +476,41 @@ function navegadorLanguage() {
     var lblFilterCondition = document.getElementById('lblFilterCondition');
     var helpMethod = document.getElementById('helpMethod');
     var btnMutate = document.getElementById('btnMutate');
+    var lblWatchCode = document.getElementById('lblWatchCode');
 
 
     if (navegadorL == 'es-ES' || navegadorL == 'es') {
-        lblAddArray.textContent = "AÑADIR ARRAY";
-        btnAddArray.textContent = "AÑADIR";
-        lblSelectArray.textContent = "SELECCIONAR ARRAY";
-        btnDeleteArray.textContent = "ELIMINAR";
-        lblSelectArray2.textContent = "SELECCIONAR ARRAY 2";
-        lblLength.textContent = "LONGITUD";
-        lblAddArguments.textContent = "AÑADIR ARGUMENTOS";
-        lblOrderSort.textContent = "ORDENADO";
-        lblOrderNum.textContent = "NUMÉRICAMENTE";
-        lblOrderAlf.textContent = "ALFABÉTICAMENTE";
-        lblFilterCondition.textContent = "CONDICIÓN";
-        helpMethod.textContent = "MÉTODO";
-        btnMutate.textContent = "MUTAR";
+        lblAddArray.textContent = 'AÑADIR ARRAY';
+        btnAddArray.textContent = 'AÑADIR';
+        lblSelectArray.textContent = 'SELECCIONAR ARRAY';
+        btnDeleteArray.textContent = 'ELIMINAR';
+        lblSelectArray2.textContent = 'SELECCIONAR ARRAY 2';
+        lblLength.textContent = 'LONGITUD';
+        lblAddArguments.textContent = 'AÑADIR ARGUMENTOS';
+        lblOrderSort.textContent = 'ORDENADO';
+        lblOrderNum.textContent = 'NUMÉRICAMENTE';
+        lblOrderAlf.textContent = 'ALFABÉTICAMENTE';
+        lblFilterCondition.textContent = 'CONDICIÓN';
+        helpMethod.textContent = 'MÉTODO';
+        btnMutate.textContent = 'MUTAR';
+        lblWatchCode.textContent = 'OBSERVA TU CÓDIGO';
     }
 
     if (navegadorL == 'en') {
-        lblAddArray.textContent = "ADD ARRAY";
-        btnAddArray.textContent = "ADD";
-        lblSelectArray.textContent = "SELECT ARRAY";
-        btnDeleteArray.textContent = "DELETE";
-        lblSelectArray2.textContent = "SELECT ARRAY 2";
-        lblLength.textContent = "LENGTH";
-        lblAddArguments.textContent = "ADD ARGUMENTS";
-        lblOrderSort.textContent = "ORDERED";
-        lblOrderNum.textContent = "NUMERICALLY";
-        lblOrderAlf.textContent = "ALPHABETICALLY";
-        lblFilterCondition.textContent = "CONDITION";
-        helpMethod.textContent = "METHOD";
-        btnMutate.textContent = "MUTATE";
+        lblAddArray.textContent = 'ADD ARRAY';
+        btnAddArray.textContent = 'ADD';
+        lblSelectArray.textContent = 'SELECT ARRAY';
+        btnDeleteArray.textContent = 'DELETE';
+        lblSelectArray2.textContent = 'SELECT ARRAY 2';
+        lblLength.textContent = 'LENGTH';
+        lblAddArguments.textContent = 'ADD ARGUMENTS';
+        lblOrderSort.textContent = 'ORDERED';
+        lblOrderNum.textContent = 'NUMERICALLY';
+        lblOrderAlf.textContent = 'ALPHABETICALLY';
+        lblFilterCondition.textContent = 'CONDITION';
+        helpMethod.textContent = 'METHOD';
+        btnMutate.textContent = 'MUTATE';
+        lblWatchCode.textContent = 'WATCH YOUR CODE';
     }
 }
 
@@ -523,7 +548,7 @@ function onPageLoad() {
 
 
 function createCodeHTML(nom, element) {
-    var codeHTML = '<pre><code class="code"><var class="keyWord">var</var> <var>' + nom + '</var> = ['; 
+    var codeHTML = '<code class="code"><var class="keyWord">var</var> <var>' + nom + '</var> = ['; 
 
     for (let i = 0; i < element.length; i++) {
         if (i == element.length - 1) {
@@ -536,7 +561,7 @@ function createCodeHTML(nom, element) {
         }
     }
 
-    codeHTML += ']</code></pre>';
+    codeHTML += '];</code>';
 
     return codeHTML;
 }
