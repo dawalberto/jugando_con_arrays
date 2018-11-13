@@ -246,6 +246,8 @@ function metodoArr() {
                     Arrays.historyOfArray(nom, 'push( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
+
+                    printCodeHTML(metodo, nom, argumentos);
                 }
             break;
             case 'indexof':
@@ -312,6 +314,8 @@ function metodoArr() {
                     Arrays.historyOfArray(nom, 'splice( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);
+
+                    printCodeHTML(metodo, nom, argumentos);
                 }
             break;
             case 'unshift': 
@@ -329,6 +333,8 @@ function metodoArr() {
                     Arrays.historyOfArray(nom, 'unshift( )');
 
                     refreshInputs(Arrays.arrs[pos], Arrays.lengths[pos]);       
+
+                    printCodeHTML(metodo, nom, argumentos);
                 }
             break;
             case 'concat':
@@ -408,37 +414,48 @@ function metodoArr() {
                 else {
                     if (argumentsFilter.indexOf(',') >= 0) alert('Solo es necesario un valor, si deseas utilizar un número decimal utilice . en lugar de ,');
                     else {
+                        if (isNaN(argumentsFilter)) {
+                            var currentArrayStrings = currentArray.filter(e => isNaN(e));
+                        }
+                        else {
+                            var currentArrayNums = currentArray.filter(e => !isNaN(e));
+                        }
+
+                        var arrFilter;
+
                         switch (condition) {
                             case '<':
-                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e < argumentsFilter);
-                                else var arrFilter = currentArray.filter(e => e < Number(argumentsFilter));
+                                if (isNaN(argumentsFilter)) arrFilter = currentArrayStrings.filter(e => e < argumentsFilter);
+                                else arrFilter = currentArrayNums.filter(e => e < Number(argumentsFilter));
                             break;
                             case '<=':
-                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e <= argumentsFilter);
-                                else var arrFilter = currentArray.filter(e => e <= Number(argumentsFilter));
+                                if (isNaN(argumentsFilter)) arrFilter = currentArrayStrings.filter(e => e <= argumentsFilter);
+                                else arrFilter = currentArrayNums.filter(e => e <= Number(argumentsFilter));
                             break;
                             case '>':
-                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e > argumentsFilter);
-                                else var arrFilter = currentArray.filter(e => e > Number(argumentsFilter));
+                                if (isNaN(argumentsFilter)) arrFilter = currentArrayStrings.filter(e => e > argumentsFilter);
+                                else arrFilter = currentArrayNums.filter(e => e > Number(argumentsFilter));
                             break;
                             case '>=':
-                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e >= argumentsFilter);
-                                else var arrFilter = currentArray.filter(e => e >= Number(argumentsFilter));
+                                if (isNaN(argumentsFilter)) arrFilter = currentArrayStrings.filter(e => e >= argumentsFilter);
+                                else arrFilter = currentArrayNums.filter(e => e >= Number(argumentsFilter));
                             break;
                             case '==':
-                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e == argumentsFilter);
-                                else var arrFilter = currentArray.filter(e => e == Number(argumentsFilter));
+                                if (isNaN(argumentsFilter)) arrFilter = currentArrayStrings.filter(e => e == argumentsFilter);
+                                else arrFilter = currentArrayNums.filter(e => e == Number(argumentsFilter));
                             break;
                             case '!=':
-                                if (isNaN(argumentsFilter)) var arrFilter = currentArray.filter(e => e != argumentsFilter);
-                                else var arrFilter = currentArray.filter(e => e != Number(argumentsFilter));
+                                if (isNaN(argumentsFilter)) arrFilter = currentArray.filter(e => e != argumentsFilter);
+                                else arrFilter = currentArray.filter(e => e != Number(argumentsFilter));
                             break;
                         }
-                        alert(nom + '.filter(e => e ' + condition + ' ' +argumentsFilter + ');\n \n' + arrFilter + '\n \n length ' + arrFilter.length);
-
-                        document.getElementById('argumentsFilter').value = '';
+                        alert('RESULTADO: [' + arrFilter + ']' + '\n \n LENGTH: ' + arrFilter.length);
                         
                         Arrays.historyOfArray(nom, 'filter( )');
+
+                        printCodeHTML(metodo, nom);
+
+                        document.getElementById('argumentsFilter').value = '';
                     }
                 }
             break;
@@ -500,7 +517,38 @@ function createCodeHTML(method, nomArr, argumentos) {
             if (isNaN(argumentos)) codeHTML += '<var class="strings">"' + argumentos + '"</var>);';
             else codeHTML += '<var class="nums">' + argumentos + '</var>);';
         break;
+        //MÉTODOD QUE PUEDEN LLEVAR MÁS DE UN ARGUMENTO
+        case 'push':
+        case 'splice':
+        case 'unshift':
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(';
 
+            for (let i = 0; i < argumentos.length; i++) {
+                if (i == argumentos.length - 1) {
+                    if (isNaN(argumentos[i])) codeHTML += '<var class="strings">"' + argumentos[i] + '"</var>';
+                    else codeHTML += '<var class="nums">' + argumentos[i] + '</var>';
+                }
+                else {
+                    if (isNaN(argumentos[i])) codeHTML += '<var class="strings">"' + argumentos[i] + '"</var>, ';
+                    else codeHTML += '<var class="nums">' + argumentos[i] + '</var>, ';
+                }
+            }
+
+            codeHTML += ');</code>';
+        break;
+        //MÉTODO ESPECIAL
+        case 'filter':
+            var argumentsFilter = document.getElementById('argumentsFilter').value;
+            var condition = document.getElementById('selectCondition').value;
+
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(';
+
+            if (isNaN(argumentsFilter)) 
+                codeHTML += '<var class="strings">e</var><var class="keyWord"> => </var><var>e </var>' + condition + ' ' + '<var class="strings">"' + argumentsFilter + '"</var>);';
+            else
+                codeHTML += '<var class="strings">e</var><var class="keyWord"> => </var><var>e </var>' + condition + ' ' + '<var class="nums">' + argumentsFilter + '</var>);';
+
+        break;
     }
 
     return codeHTML;
