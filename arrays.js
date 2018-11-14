@@ -349,7 +349,9 @@ function metodoArr() {
                     var nomArr2 = Arrays.noms[Arrays.findPosByNom(list2.value)];
 
                     Arrays.historyOfArray(nom, 'concat( )');
-                    alert('RESULTADO: ' + arrConcat + '\n \nLENGTH: ' + arrConcat.length);                  
+                    alert('RESULTADO: [' + arrConcat + ']\n \nLENGTH: ' + arrConcat.length);     
+                    
+                    printCodeHTML(metodo, nomArr1, nomArr2);
                 }
             break;
             case 'lastindexof':
@@ -404,6 +406,8 @@ function metodoArr() {
                     Arrays.historyOfArray(nom, 'sort( )');
 
                     refreshInputs(Arrays.findArrByNom(nom), Arrays.lengths[pos]);  
+
+                    printCodeHTML(metodo, nom);
                 }
             break;
             case 'filter':
@@ -505,7 +509,7 @@ function createCodeHTML(method, nomArr, argumentos) {
         case 'reverse':
         case 'pop':
         case 'shift':
-            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>();';
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>();</code>';
         break;
         //MÉTODOS QUE SOLO NECESITAN UN ARGUMENTO
         case 'indexOf':
@@ -514,8 +518,8 @@ function createCodeHTML(method, nomArr, argumentos) {
         case 'includes':
             codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(';
 
-            if (isNaN(argumentos)) codeHTML += '<var class="strings">"' + argumentos + '"</var>);';
-            else codeHTML += '<var class="nums">' + argumentos + '</var>);';
+            if (isNaN(argumentos)) codeHTML += '<var class="strings">"' + argumentos + '"</var>);</code>';
+            else codeHTML += '<var class="nums">' + argumentos + '</var>);</code>';
         break;
         //MÉTODOD QUE PUEDEN LLEVAR MÁS DE UN ARGUMENTO
         case 'push':
@@ -536,7 +540,6 @@ function createCodeHTML(method, nomArr, argumentos) {
 
             codeHTML += ');</code>';
         break;
-        //MÉTODO ESPECIAL
         case 'filter':
             var argumentsFilter = document.getElementById('argumentsFilter').value;
             var condition = document.getElementById('selectCondition').value;
@@ -544,10 +547,21 @@ function createCodeHTML(method, nomArr, argumentos) {
             codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(';
 
             if (isNaN(argumentsFilter)) 
-                codeHTML += '<var class="strings">e</var><var class="keyWord"> => </var><var>e </var>' + condition + ' ' + '<var class="strings">"' + argumentsFilter + '"</var>);';
+                codeHTML += '<var class="strings">e</var><var class="keyWord"> => </var><var>e </var>' + condition + ' ' + '<var class="strings">"' + argumentsFilter + '"</var>);</code>';
             else
-                codeHTML += '<var class="strings">e</var><var class="keyWord"> => </var><var>e </var>' + condition + ' ' + '<var class="nums">' + argumentsFilter + '</var>);';
+                codeHTML += '<var class="strings">e</var><var class="keyWord"> => </var><var>e </var>' + condition + ' ' + '<var class="nums">' + argumentsFilter + '</var>);</code>';
 
+        break;
+        case 'sort':
+            var radioNum = document.getElementById('radioNum').checked;
+
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(';
+
+            if (radioNum) codeHTML += '(<var class="strings">a</var>, <var class="strings">b</var>) <var class="keyWord">=> </var>{<var class="keyWord">return</var> <var>a</var> - <var>b</var>});';
+            else codeHTML += ');</code>';
+        break;
+        case 'concat':
+            codeHTML = '<code class="code"><var>' + nomArr + '</var>.<var class="method">' + method + '</var>(' + argumentos + ');</code>';
         break;
     }
 
