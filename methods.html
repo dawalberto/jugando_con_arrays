@@ -105,7 +105,7 @@
     <p class="display-4 code">push( )</p>
 
     <div id="pushdef" class="definition">
-        <p class="text-justify">El método push() añade nuevos elementos en un array y devuelve la nueva longitud de este.</p>
+        <p class="text-justify">El método push() añade nuevos elementos al final de un array y devuelve la nueva longitud de este.</p>
     </div>
     <hr>
     <pre><code class="code">
@@ -222,7 +222,7 @@
 </div>
 
 <div id="includes">
-        <p class="display-4 code">indexOf( )</p>
+        <p class="display-4 code">includes( )</p>
     
         <div id="includesdef" class="definition">
             <p class="text-justify">El método includes() busca un elemento en un array y devuelve true en caso de encontrarlo y false en caso de no hacerlo.</p>
@@ -240,7 +240,72 @@
             */
             </var>
         </code></pre>
+</div>
+
+<div id="unshift">
+    <p class="display-4 code">unshift( )</p>
+
+    <div id="unshiftdef" class="definition">
+        <p class="text-justify">El método unshift() añade nuevos elementos al inicio de un array y devuelve la nueva longitud de este.</p>
     </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+
+        <var class="keyWord">var</var> <var>newLength</var> = <var>vowels</var>.<var class="method">unshift</var>(<var class="strings">'A'</var>, <var class="strings">'E'</var>);
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels ----> ['A', 'E', 'a', 'e', 'i', 'o', 'u']
+        newLength ----> 7
+        */
+        </var>
+    </code></pre>
+</div>
+
+<div id="concat">
+    <p class="display-4 code">concat( )</p>
+
+    <div id="concatdef" class="definition">
+        <p class="text-justify">El método concat() une dos o más arrays y devuelve un nuevo array con los elementos de los arrays unidos.</p>
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels1</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>];
+        <var class="keyWord">var</var> <var>vowels2</var> = [<var class="strings">'o'</var>, <var class="strings">'u'</var>];
+
+        <var class="keyWord">var</var> <var>vowels</var> = <var>vowels1</var>.<var class="method">concat</var>(<var>vowels2</var>);
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels1 ----> ['a', 'e', 'i']
+        vowels2 ----> ['o', 'u']
+        vowels ----> ['a', 'e', 'i', 'o', 'u']
+        */
+        </var>
+    </code></pre>
+</div>
+
+<div id="sort">
+    <p class="display-4 code">sort( )</p>
+
+    <div id="sortdef" class="definition">
+        <p class="text-justify">El método pop() elimina y devuelve el último elemento de un array.</p>
+    </div>
+    <hr>
+    <pre><code class="code">
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+
+        <var class="keyWord">var</var> <var>lastElement</var> = <var>vowels</var>.<var class="method">pop</var>();
+        <var class="coments">
+        /*
+        RESULTADO
+        vowels ----> ['a', 'e', 'i', 'o']
+        lastElement ----> 'u'
+        */
+        </var>
+    </code></pre>
+</div>
 
 <script>
     function methodSelected() {
@@ -279,6 +344,12 @@
             break;
             case 'includes':
                 changeDisplay('includes');
+            break;
+            case 'unshift':
+                changeDisplay('unshift');
+            break;
+            case 'concat':
+                changeDisplay('concat');
             break;
         }
     }
