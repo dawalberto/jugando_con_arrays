@@ -60,9 +60,13 @@ function addArr() {
         nomArr = nomArr.trim();      
         var nomsArrs = Arrays.noms;
 
-        if (nomsArrs.indexOf(nomArr) >= 0) {
-            alert('No se permiten dos Arrays con el mismo nombre');
-            document.getElementById('nomArr').value = '';
+        if (nomsArrs.indexOf(nomArr) >= 0 || nomArr.indexOf(' ') >= 0) {
+            if (nomsArrs.indexOf(nomArr) >= 0) 
+                alert('No se permiten dos Arrays con el mismo nombre');
+            else
+                alert('No se permiten nombres con espacios');
+                
+                document.getElementById('nomArr').value = '';            
         }
         else {
             elements = elements.split(',');
