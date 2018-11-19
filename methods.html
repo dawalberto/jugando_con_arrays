@@ -316,6 +316,56 @@
     </code></pre>
 </div>
 
+<div id="filter">
+        <p class="display-4 code">filter( )</p>
+    
+        <div id="filterdef" class="definition">
+            <p class="text-justify">El método filter() devuelve un nuevo array con los elementos que hayan pasado con éxito la función que le pasamos.</p>
+            <p class="text-justify">
+                Puedes pasarle cualquier función que se te ocurra, pero como este programa esta pensado para que el usuario no tenga que escribir ni una
+                línea de código, la funcionalidad de este método se ve limitada.
+            </p>   
+            <p class="text-justify">Concretamente podremos obtener un nuevo array con los elementos &lt;, &lt;=, &gt;, &gt;=, == o != del valor que le pasemos.</p>
+        </div>
+        <hr>
+        <pre><code class="code">
+            <var class="keyWord">var</var> <var>nums</var> = [<var class="nums">1</var>, <var class="nums">2</var>, <var class="nums">3</var>, <var class="nums">4</var>];
+            <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+            <var class="keyWord">var</var> <var>newArray</var>;
+
+            <var>newArray</var> = <var>nums</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &lt; <var class="nums">2</var>);
+            <var class="coments">// RESULTADO newArray ----> [1] </var>
+            <var>newArray</var> = <var>vowels</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &lt; <var class="strings">'e'</var>);
+            <var class="coments">// RESULTADO newArray ----> ['a'] </var>
+
+            <var>newArray</var> = <var>nums</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &lt;= <var class="nums">2</var>);
+            <var class="coments">// RESULTADO newArray ----> [1, 2] </var>
+            <var>newArray</var> = <var>vowels</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &lt;= <var class="strings">'e'</var>);
+            <var class="coments">// RESULTADO newArray ----> ['a', 'e'] </var>            
+
+            <var>newArray</var> = <var>nums</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &gt; <var class="nums">2</var>);
+            <var class="coments">// RESULTADO newArray ----> [3, 4] </var>
+            <var>newArray</var> = <var>vowels</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &gt; <var class="strings">'e'</var>);
+            <var class="coments">// RESULTADO newArray ----> ['i', 'o', 'u'] </var>
+
+            <var>newArray</var> = <var>nums</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &gt;= <var class="nums">2</var>);
+            <var class="coments">// RESULTADO newArray ----> [2, 3, 4] </var>
+            <var>newArray</var> = <var>vowels</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e &gt;= <var class="strings">'e'</var>);
+            <var class="coments">// RESULTADO newArray ----> ['e', 'i', 'o', 'u'] </var>
+
+            <var>newArray</var> = <var>nums</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e == <var class="nums">2</var>);
+            <var class="coments">// RESULTADO newArray ----> [2] </var>
+            <var>newArray</var> = <var>vowels</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e == <var class="strings">'e'</var>);
+            <var class="coments">// RESULTADO newArray ----> ['e'] </var>
+
+            <var>newArray</var> = <var>nums</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e != <var class="nums">2</var>);
+            <var class="coments">// RESULTADO newArray ----> [1, 3, 4] </var>
+            <var>newArray</var> = <var>vowels</var>.<var class="method">filter</var>(<var class="strings">e</var> <var class="keyWord">=></var> e != <var class="strings">'e'</var>);
+            <var class="coments">// RESULTADO newArray ----> ['a', 'i', 'o', 'u'] </var>
+
+        </code></pre>
+    </div>
+
 <script>
     function methodSelected() {
         var windowFather = window.opener;
@@ -362,6 +412,9 @@
             break;
             case 'sort':
                 changeDisplay('sort');
+            break;
+            case 'filter':
+                changeDisplay('filter');
             break;
         }
     }
