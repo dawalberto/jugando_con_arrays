@@ -290,20 +290,29 @@
     <p class="display-4 code">sort( )</p>
 
     <div id="sortdef" class="definition">
-        <p class="text-justify">El método pop() elimina y devuelve el último elemento de un array.</p>
+        <p class="text-justify">El método sort() ordena un array.</p>
+        <p class="text-justify">El orden puede ser tanto alfabético(por defecto) como numérico, y tanto ascendiente(por defecto) como descendiente.</p>
+
     </div>
     <hr>
     <pre><code class="code">
-        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'a'</var>, <var class="strings">'e'</var>, <var class="strings">'i'</var>, <var class="strings">'o'</var>, <var class="strings">'u'</var>];
+        <var class="keyWord">var</var> <var>vowels</var> = [<var class="strings">'u'</var>, <var class="strings">'o'</var>, <var class="strings">'a'</var>, <var class="strings">'i'</var>, <var class="strings">'e'</var>];
+        <var>vowels</var>.<var class="method">sort</var>();
+        <var class="coments">//RESULTADO vowels ----> ['a', 'e', 'i', 'o', 'u']</var>
 
-        <var class="keyWord">var</var> <var>lastElement</var> = <var>vowels</var>.<var class="method">pop</var>();
+        <var class="keyWord">var</var> <var>nums</var> = [<var class="nums">11</var>, <var class="nums">0</var>, <var class="nums">10.5</var>, <var class="nums">6</var>, <var class="nums">4</var>];
+        <var>nums</var>.<var class="method">sort</var>();
         <var class="coments">
         /*
-        RESULTADO
-        vowels ----> ['a', 'e', 'i', 'o']
-        lastElement ----> 'u'
+        RESULTADO nums ----> [0, 10.5, 11, 4, 6]
+        Esto es debido a que estamos ordenando los números de forma 
+        alfabética en lugar de numérica, y alfabéticamente 
+        el 11 va antes que el 6 por ejemplo.
         */
         </var>
+
+        <var>nums</var>.<var class="method">sort</var>((<var class="strings">a</var>, <var class="strings">b</var>) <var class="keyWord">=></var> {<var class="keyWord">return</var> a-b});
+        <var class="coments">// RESULTADO nums ----> [0, 4, 6, 10.5, 11]</var>
     </code></pre>
 </div>
 
@@ -350,6 +359,9 @@
             break;
             case 'concat':
                 changeDisplay('concat');
+            break;
+            case 'sort':
+                changeDisplay('sort');
             break;
         }
     }
