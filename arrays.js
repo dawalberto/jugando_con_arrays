@@ -225,7 +225,7 @@ function metodoArr() {
             case 'pop':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
-                    alert('Eliminado el elemento ' + '"' + currentArray[currentArray.length - 1] + '"');
+                    alert('ELIMINADO EL ELEMENTO ' + '"' + currentArray[currentArray.length - 1] + '"');
                     currentArray.pop();
                     Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'pop( )');
@@ -294,7 +294,7 @@ function metodoArr() {
             case 'shift':
                 if (Arrays.lengths[pos] == 0) alert('No quedan elementos en el array');
                 else {
-                    alert('Eliminado el elemento ' + '"' + currentArray.shift() + '"');
+                    alert('ELIMINADO EL ELEMENTO ' + '"' + currentArray.shift() + '"');
 
                     Arrays.lengths[pos] = currentArray.length;
                     Arrays.historyOfArray(nom, 'shift( )');
