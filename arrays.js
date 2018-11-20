@@ -88,6 +88,8 @@ function addArr() {
             printCodeHTML('add', nomArr, elements);
 
             fillSelectArr2(nomArr);
+
+            alert('ARRAY AÑADIDO CORRECTAMENTE');
         }
     }
 }
@@ -194,6 +196,8 @@ function deleteArr() {
 
         list.selectedIndex = 0;
         list2.selectedIndex = 0;
+
+        alert('ARRAY ELIMINADO CORRECTAMENTE');
     }
 }
 
@@ -581,6 +585,8 @@ function refreshInputs(selected, length) {
 
 function mutate() {
     metodoArr();
+
+    document.getElementById('divYourCode').scrollTop = 1000000000000;
 }
 
 
@@ -663,9 +669,8 @@ function onPageLoad() {
 
     var widthDevice = screen.width;
 
-    if (widthDevice < 400) {
-        alert('Esta página todavía no está optimizada para móviles. Estamos trabajando en ello.');
-    }
-
+    if (widthDevice < 400) 
+        alert('ESTA PÁGINA NO ESTÁ OPTIMIZADA PARA DISPOSITIVOS MÓVILES.');
+    
     navegadorLanguage();
 }
