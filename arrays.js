@@ -484,7 +484,7 @@ function printCodeHTML(method, nomArr, argumentos) {
         if (numLineasCode <= 9)
             resHTML.innerHTML += '<span>&nbsp&nbsp&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, argumentos) + '<br />';
 
-        if  (numLineasCode > 9) 
+        if  (numLineasCode > 9 && numLineasCode <= 99) 
             resHTML.innerHTML += '<span>&nbsp&nbsp' + numLineasCode +  '&nbsp&nbsp&nbsp</span>' + createCodeHTML(method, nomArr, argumentos) + '<br />';
 
         if (numLineasCode > 99)
