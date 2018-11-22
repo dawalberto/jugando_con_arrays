@@ -86,9 +86,9 @@ function addArr() {
             document.getElementById('lengthArr').value = Arrays.lengths[Arrays.arrs.length - 1];
 
             printCodeHTML('add', nomArr, elements);
-
+            $('#yourCode').scrollTop(10000);
+            
             fillSelectArr2(nomArr);
-
             alert('ARRAY AÑADIDO CORRECTAMENTE');
         }
     }
@@ -586,7 +586,7 @@ function refreshInputs(selected, length) {
 function mutate() {
     metodoArr();
 
-    document.getElementById('divYourCode').scrollTop = 1000000000000;
+    $('#yourCode').scrollTop(10000);
 }
 
 
