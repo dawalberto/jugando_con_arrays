@@ -648,7 +648,7 @@ function navegadorLanguage() {
 function openWindowMethods() {
     if (document.getElementById('metodoArray').value == '') alert('Debe seleccionar un método');
     else {
-        window.open('./methods.html', '', 'top=85px, left=10px, width=600px, height=500px');
+        window.open('./paginas/methods.html', '', 'top=85px, left=10px, width=600px, height=500px');
     }
 }
 
