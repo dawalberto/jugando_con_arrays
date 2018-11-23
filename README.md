@@ -57,5 +57,5 @@ En la carpeta del proyecto podemos encontrar los siguientes ficheros y directori
 * Una de las cosas que quería hacer, y he hecho en la página web es que cualquier usuario pudiese “toquetear” el programa sin tener ni idea de programación. Para esto me pareció muy importante que el usuario pudiese introducir los elementos sin tener que escribirlos entre comillas. A mi parecer una persona cualquiera no tiene porque saber que los datos de tipo string que queramos introducir en una matriz deben ir entre comillas para no ser confundidos con variables sin declarar que provocarán un error. A causa de esto la aplicación web quedó limitada a interpretar siempre los datos de tipo numéricos únicamente como numéricos, es decir, un usuario nunca podrá introducir un “2” de tipo string, siempre será un 2 de tipo number.
 
 
-### AUTOR
+### AUTOR :octocat:
 Alberto García Sola
