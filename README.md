@@ -27,8 +27,10 @@ Jugando con arrays nos permite:
 
 
 ### ¿CÓMO FUNCIONA?
-La mayor parte de la funcionalidad de la aplicación web recae sobre el objeto Arrays,en el cual tenemos todas las matrices que se van generando durante el uso de la aplicación. 
-Cuando un usuario añade una matriz lo que pasa en el programa es que se añaden el nombre de la matriz, sus elementos y su longitud en las propiedades noms, arrs y lengths del objeto Arrays. Como dichas propiedades son matrices, después de que el usuario haya introducido varias matrices y queramos trabajar con una de ellas, para referirnos por ejemplo a la primera matriz que introdujo el usuario necesitaríamos recoger el nombre de la matriz(Arrays.noms[0]), los elementos de la matriz(Arrays.arrs[0]), y la longitud de la matriz(Arrays.lengths[0]). 
+La mayor parte de la funcionalidad de la aplicación web recae sobre el objeto Arrays,en el cual tenemos todas las matrices que se van generando durante el uso de la aplicación.
+
+Cuando un usuario añade una matriz lo que pasa en el programa es que se añaden el nombre de la matriz, sus elementos y su longitud en las propiedades noms, arrs y lengths del objeto Arrays. Como dichas propiedades son matrices, después de que el usuario haya introducido varias matrices y queramos trabajar con una de ellas, para referirnos por ejemplo a la primera matriz que introdujo el usuario necesitaríamos recoger el nombre de la matriz(Arrays.noms[0]), los elementos de la matriz(Arrays.arrs[0]), y la longitud de la matriz(Arrays.lengths[0]).
+
 Cuando un usuario elimina una matriz primero se localiza la posición que hace referencia a todas las propiedades de la matriz seleccionada, como por ejemplo el nombre de la matriz(Arrays.noms[3]), los elementos de la matriz(Arrays.arrs[3]), y la longitud de la matriz(Arrays.lengths[3]). Una vez sabemos la posición que hace referencia a la matriz seleccionada por el usuario(en este caso la 3), como las propiedades del objeto Arrays son matrices, basta con eliminar dicha posición.
 Cuando un usuario ejecuta un método se ejecuta la función metodoArr(), la cual está formada principalmente por una estructura switch case en la que cada case es un método de los que puede seleccionar el usuario, una vez dentro del case adecuado se recupera la matriz seleccionada por el usuario de la misma manera en la que se explica arriba para poder trabajar con ella y se ejecuta el código correspondiente al método seleccionado por el usuario. 
 
