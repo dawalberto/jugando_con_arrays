@@ -15,12 +15,16 @@
 <style>
     body {
         background-color: rgb(42, 44, 46);
+        font-size: 1.2rem;
     }
     label, .display-4 {
         color: white;
     }
     span {
         color: #383737;
+    }
+    .fontButton {
+        font-size: 1.1rem;
     }
     .row {
         padding-top: 15px;
@@ -29,10 +33,13 @@
         width: 90px;
     }
     .yourCode {
-        margin-left: 250px;
-        margin-right: 250px;
-        padding-left: 15px;
-        height: 200px;
+        margin-left: 9vw;
+        margin-right: 9vw;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        padding-left: 1em;
+        padding-top: 5px;
+        height: 16em;
         background-color: #1a1a1a;
         overflow: auto;
     }
@@ -60,7 +67,7 @@
             <div class="col-2 text-right"><label for="nomArr" class="font-weight-light" id="lblAddArray">ADD ARRAY</label></div>
             <div class="col-2"><input class="form-control" type="text" id="nomArr" placeholder="vowels"></div>
             <div class="col-6"><input class="form-control" type="text" id="elementsArr" placeholder="a, e, i, o, u"></div>
-            <div class="col-1"><button class="btn btn-outline-success botonAncho" onclick="addArr()" id="btnAddArray">ADD</button></div>
+            <div class="col-1"><button class="btn btn-success botonAncho fontButton" onclick="addArr()" id="btnAddArray">ADD</button></div>
         </div>
         <div class="row align-items-end">
             <div class="col-2 text-right"><label for="listArrs" class="font-weight-light" id="lblSelectArray">SELECT ARRAY</label></div>
@@ -70,7 +77,7 @@
                 </select>
             </div>
             <div class="col-6"><input class="form-control" type="text" id="selectedArray" readonly></div>
-            <div class="col-1"><button class="btn btn-outline-danger botonAncho" onclick="deleteArr()" id="btnDeleteArray">DELETE</button></div>
+            <div class="col-1"><button class="btn btn-danger botonAncho fontButton" onclick="deleteArr()" id="btnDeleteArray">DELETE</button></div>
         </div>
         <div class="row align-items-end" id="array2">
             <div class="col-2 text-right"><label for="listArrs2" class="font-weight-light" id="lblSelectArray2">SELECT ARRAY 2</label></div>
@@ -125,7 +132,7 @@
             <div class="col-1"><input class="form-control" type="text" id="argumentsFilter"></div>
         </div>
         <div class="row align-items-end">
-            <div class="col-2 text-right"><button type="button" class="btn btn-link" id="helpMethod" onclick="openWindowMethods()">METHOD</button></div>            
+            <div class="col-2 text-right"><button type="button" class="btn btn-link fontButton" id="helpMethod" onclick="openWindowMethods()">METHOD</button></div>            
             <div class="col-2">
                 <select class="form-control" name="metodoArray" id="metodoArray" onchange="changeMethod()" >
                     <option value="" disabled selected>Select</option>
@@ -144,7 +151,7 @@
                     <option value="filter">filter( )</option>
                 </select>
             </div>
-            <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block" onclick="mutate()" id="btnMutate">MUTATE</button></div>
+            <div class="col-6" id="divBotonMutate"><button class="btn btn-primary btn-block fontButton" onclick="mutate()" id="btnMutate">MUTATE</button></div>
         </div>
         <div class="row justify-content-md-center divlblCode">
             <p class="display-4" id="lblWatchCode">WATCH YOUR CODE</p>
